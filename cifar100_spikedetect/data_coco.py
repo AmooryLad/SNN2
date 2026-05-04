@@ -135,13 +135,13 @@ def build_dataloaders(
         train_set, batch_size=batch_size, shuffle=True, drop_last=True,
         num_workers=num_workers, pin_memory=True,
         collate_fn=detection_collate, persistent_workers=num_workers > 0,
-        prefetch_factor=4 if num_workers > 0 else None,
+        prefetch_factor=6 if num_workers > 0 else None,
     )
     val_loader = DataLoader(
         val_set, batch_size=batch_size, shuffle=False, drop_last=False,
         num_workers=max(2, num_workers // 2), pin_memory=True,
         collate_fn=detection_collate, persistent_workers=num_workers > 0,
-        prefetch_factor=4 if num_workers > 0 else None,
+        prefetch_factor=6 if num_workers > 0 else None,
     )
     # val_set is always CocoDetectionAdapter (not wrapped), has class_names
     return train_loader, val_loader, val_set.class_names

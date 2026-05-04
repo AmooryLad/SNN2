@@ -80,7 +80,7 @@ def progressive_unfreeze_schedule(epoch):
 
 # --- Experiment config ---------------------------------------------------
 
-EXPERIMENT = "V5_kd"
+EXPERIMENT = "V8_512"
 
 # schema: dataset, epochs, warmup, max_iters, do_eval,
 #         backbone_source, warm_start_ckpt, warm_start_scope, aug_level, label
@@ -103,16 +103,31 @@ EXPERIMENTS = {
               "cifar100_spikedetect_V4_mosaic_best.pth", 'all',
               'strong',
               "V5 = V4 + KD from ANN teacher (enable via USE_KD)"),
-    "V5b_atss": ("coco", 8, 0, None, True,
-                 'imagenet_ann',
-                 "cifar100_spikedetect_V5_kd_best.pth", 'all',
-                 'strong',
-                 "V5b = V5 + ATSS matcher fine-tune (8 epochs, no warmup)"),
     "V6_spiking": ("coco", 15, 2, None, True,
                    'imagenet_ann',
                    "cifar100_spikedetect_V5_kd_best.pth", 'all',
                    'strong',
                    "V6 = V5 + spike-native FPN/head (I-LIF K=4)"),
+    "V7_yolov8": ("coco", 20, 2, None, True,
+                  'imagenet_ann',
+                  "cifar100_spikedetect_V5_kd_best.pth", 'backbone_only',
+                  'strong',
+                  "V7 = V5 backbone + YOLOv8 head (TAL+CIoU+DFL via ultralytics)"),
+    "V7_debug":  ("coco", 1, 0, 50, False,
+                  'imagenet_ann',
+                  "cifar100_spikedetect_V5_kd_best.pth", 'backbone_only',
+                  'basic',
+                  "V7 50-iter smoke test"),
+    "V7_sanity": ("coco", 1, 0, None, True,
+                  'imagenet_ann',
+                  "cifar100_spikedetect_V5_kd_best.pth", 'backbone_only',
+                  'strong',
+                  "V7 1-epoch sanity check (full train + eval)"),
+    "V8_512": ("coco", 30, 2, None, True,
+               'imagenet_ann',
+               "cifar100_spikedetect_V7_yolov8_best.pth", 'all',
+               'strong',
+               "V8 = V7 weights at 512x512, 30 epochs, batch=8, num_workers=14"),
 }
 
 (dataset_name, num_epochs, warmup_epochs, max_iters, do_eval,
@@ -121,9 +136,9 @@ EXPERIMENTS = {
 EXPERIMENT_NAME = f"cifar100_spikedetect_{EXPERIMENT}"
 
 # --- Feature flags (enable stage-specific code paths) ------------------
-USE_KD = EXPERIMENT in ("V5_kd", "V5b_atss")
+USE_KD = EXPERIMENT in ("V5_kd", "V7_yolov8", "V7_debug", "V7_sanity", "V8_512")
 USE_SPIKING_HEAD = EXPERIMENT in ("V6_spiking",)
-USE_ATSS = EXPERIMENT in ("V5b_atss",)
+USE_YOLO = EXPERIMENT in ("V7_yolov8", "V7_debug", "V7_sanity", "V8_512")
 
 
 # --- Hyperparameters -----------------------------------------------------
@@ -155,6 +170,15 @@ if USE_KD:
 # For V6 (spiking head) use lower LR since we're fine-tuning warmed-up convs
 if USE_SPIKING_HEAD:
     lr_head *= 0.33
+
+# V8: 512x512 input — measured peak 26.7 GB / 33.7 GB on RTX 5090 with
+# batch=8 (79% used, ~7 GB headroom for fragmentation drift). num_workers=14
+# uses ~30% of the 48-thread Threadripper without contending with the main
+# process. Going b9 is feasible but eats headroom; b10 OOMs.
+if EXPERIMENT == "V8_512":
+    img_size = 512
+    batch_size = 8
+    num_workers = 14
 
 weight_decay = 1e-4
 grad_clip_norm = 1.0
@@ -223,23 +247,34 @@ print(f"num_classes={num_classes} (incl. background)")
 # --- Model ---------------------------------------------------------------
 
 base_cifar_ckpt = PROJECT_ROOT / "checkpoints" / "cifar100_sew_T_best.pth"
-model = build_retinanet(
-    num_classes=num_classes,
-    num_steps=num_steps,
-    backbone_ckpt=str(base_cifar_ckpt) if base_cifar_ckpt.exists() else None,
-    backbone_source=backbone_source,
-    trainable_backbone_layers=trainable_backbone_layers,
-    spiking_fpn=USE_SPIKING_HEAD,
-    K=4,
-).to(device)
+if USE_YOLO:
+    from cifar100_spikedetect.yolov8_detector import build_yolov8_detector
+    model = build_yolov8_detector(
+        num_classes=num_classes,
+        num_steps=num_steps,
+        backbone_ckpt=str(base_cifar_ckpt) if base_cifar_ckpt.exists() else None,
+        backbone_source=backbone_source,
+        trainable_backbone_layers=trainable_backbone_layers,
+    ).to(device)
+else:
+    model = build_retinanet(
+        num_classes=num_classes,
+        num_steps=num_steps,
+        backbone_ckpt=str(base_cifar_ckpt) if base_cifar_ckpt.exists() else None,
+        backbone_source=backbone_source,
+        trainable_backbone_layers=trainable_backbone_layers,
+        spiking_fpn=USE_SPIKING_HEAD,
+        K=4,
+    ).to(device)
 
 
 # --- Warm-start from previous experiment checkpoint ---------------------
 
 def warm_start_from(ckpt_path, scope='all'):
     """scope:
-         'all' — load every matching tensor
-         'head_fpn' — load only non-backbone tensors (FPN + classification/regression heads)
+         'all'           — load every matching tensor
+         'head_fpn'      — load only non-backbone tensors (FPN + heads)
+         'backbone_only' — load only backbone weights (V7: head changed, can't reuse)
     """
     ws = torch.load(str(ckpt_path), map_location=device, weights_only=False)
     src_state = ws["model_state_dict"]
@@ -251,6 +286,8 @@ def warm_start_from(ckpt_path, scope='all'):
             continue
         if scope == 'head_fpn' and k.startswith('backbone.body.'):
             continue   # preserve the freshly-loaded ImageNet backbone
+        if scope == 'backbone_only' and not k.startswith('backbone.body.'):
+            continue   # only transfer the SEW backbone, head/FPN start fresh
         own_state[k] = v
         loaded += 1
     model.load_state_dict(own_state)
@@ -264,11 +301,6 @@ if warm_start_ckpt is not None:
         warm_start_from(ws_path, scope=warm_start_scope)
     else:
         print(f"(warning) warm-start ckpt not found: {ws_path}")
-
-# Patch ATSS matcher (V5b only) — must happen after model is built.
-if USE_ATSS:
-    from cifar100_spikedetect.atss import patch_retinanet_with_atss
-    patch_retinanet_with_atss(model, topk=9)
 
 n_total = sum(p.numel() for p in model.parameters())
 n_train = sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -359,6 +391,45 @@ def move_targets(targets, device):
              "labels": t["labels"].to(device, non_blocking=True)} for t in targets]
 
 
+# --- Memory canary ------------------------------------------------------
+# Flip MEM_CANARY=True to run a single forward+backward at the current
+# (img_size, batch_size, USE_KD) config and print peak VRAM, then exit.
+# Use this before committing to a long run at a new resolution.
+MEM_CANARY = False
+if MEM_CANARY:
+    print(f"[canary] one forward+backward at img={img_size} batch={batch_size} USE_KD={USE_KD}...")
+    torch.cuda.reset_peak_memory_stats()
+    model.train()
+    imgs, targets = next(iter(train_loader))
+    imgs = [img.to(device, non_blocking=True) for img in imgs]
+    targets = move_targets(targets, device)
+    optimizer.zero_grad(set_to_none=True)
+    if use_amp:
+        with torch.amp.autocast("cuda", dtype=amp_dtype):
+            loss_dict = model(imgs, targets)
+            loss = sum(loss_dict.values())
+            if USE_KD and teacher is not None:
+                t_feats = teacher_fpn_features(teacher, imgs)
+                s_feats = (model.extract_fpn_features(imgs) if USE_YOLO
+                           else get_student_fpn_features(model, imgs))
+                loss = loss + KD_WEIGHT * feature_kd_loss(s_feats, t_feats)
+    else:
+        loss_dict = model(imgs, targets)
+        loss = sum(loss_dict.values())
+        if USE_KD and teacher is not None:
+            t_feats = teacher_fpn_features(teacher, imgs)
+            s_feats = (model.extract_fpn_features(imgs) if USE_YOLO
+                       else get_student_fpn_features(model, imgs))
+            loss = loss + KD_WEIGHT * feature_kd_loss(s_feats, t_feats)
+    loss.backward()
+    peak_gb = torch.cuda.max_memory_allocated() / 1e9
+    total_gb = torch.cuda.get_device_properties(0).total_memory / 1e9
+    print(f"[canary] img={img_size} batch={batch_size} "
+          f"peak={peak_gb:.2f} GB / {total_gb:.1f} GB "
+          f"({100*peak_gb/total_gb:.0f}% used)")
+    sys.exit(0)
+
+
 for epoch in range(start_epoch, start_epoch + num_epochs):
     # Progressive unfreezing — uses ABSOLUTE epoch so resume preserves the
     # already-unfrozen state (otherwise resume would refreeze L2/L3).
@@ -368,7 +439,10 @@ for epoch in range(start_epoch, start_epoch + num_epochs):
           f"trainable params {n_train:,} ---")
 
     model.train()
-    running = {"classification": 0.0, "bbox_regression": 0.0, "total": 0.0}
+    if USE_YOLO:
+        running = {"cls": 0.0, "ciou": 0.0, "dfl": 0.0, "total": 0.0}
+    else:
+        running = {"classification": 0.0, "bbox_regression": 0.0, "total": 0.0}
     n_batches = 0
     t0 = time.time()
 
@@ -394,7 +468,10 @@ for epoch in range(start_epoch, start_epoch + num_epochs):
                 loss = sum(loss_dict.values())
                 if USE_KD and teacher is not None:
                     t_feats = teacher_fpn_features(teacher, imgs)
-                    s_feats = get_student_fpn_features(model, imgs)
+                    if USE_YOLO:
+                        s_feats = model.extract_fpn_features(imgs)
+                    else:
+                        s_feats = get_student_fpn_features(model, imgs)
                     kd_loss = feature_kd_loss(s_feats, t_feats)
                     loss = loss + KD_WEIGHT * kd_loss
                     loss_dict["kd"] = kd_loss
@@ -403,7 +480,10 @@ for epoch in range(start_epoch, start_epoch + num_epochs):
             loss = sum(loss_dict.values())
             if USE_KD and teacher is not None:
                 t_feats = teacher_fpn_features(teacher, imgs)
-                s_feats = get_student_fpn_features(model, imgs)
+                if USE_YOLO:
+                    s_feats = model.extract_fpn_features(imgs)
+                else:
+                    s_feats = get_student_fpn_features(model, imgs)
                 kd_loss = feature_kd_loss(s_feats, t_feats)
                 loss = loss + KD_WEIGHT * kd_loss
                 loss_dict["kd"] = kd_loss
@@ -426,8 +506,13 @@ for epoch in range(start_epoch, start_epoch + num_epochs):
         if ema is not None:
             ema.update(model)
 
-        running["classification"] += loss_dict["classification"].item()
-        running["bbox_regression"] += loss_dict["bbox_regression"].item()
+        if USE_YOLO:
+            running["cls"]   += loss_dict["cls"].item()
+            running["ciou"]  += loss_dict["ciou"].item()
+            running["dfl"]   += loss_dict["dfl"].item()
+        else:
+            running["classification"] += loss_dict["classification"].item()
+            running["bbox_regression"] += loss_dict["bbox_regression"].item()
         running["total"] += loss.item()
         n_batches += 1
 
@@ -435,21 +520,37 @@ for epoch in range(start_epoch, start_epoch + num_epochs):
             elapsed = time.time() - t0
             its = (batch_idx + 1) / max(1e-6, elapsed)
             mem_mb = torch.cuda.max_memory_allocated() / (1024**2) if device.type == "cuda" else 0
-            print(f"  iter {batch_idx}/{len(train_loader)}  "
-                  f"loss={loss.item():.4f}  (cls {loss_dict['classification'].item():.4f} "
-                  f"bbox {loss_dict['bbox_regression'].item():.4f})  "
-                  f"{its:.2f} it/s  gpu_mem={mem_mb:.0f} MB")
+            if USE_YOLO:
+                print(f"  iter {batch_idx}/{len(train_loader)}  "
+                      f"loss={loss.item():.4f}  "
+                      f"(cls {loss_dict['cls'].item():.4f} "
+                      f"ciou {loss_dict['ciou'].item():.4f} "
+                      f"dfl {loss_dict['dfl'].item():.4f})  "
+                      f"{its:.2f} it/s  gpu_mem={mem_mb:.0f} MB")
+            else:
+                print(f"  iter {batch_idx}/{len(train_loader)}  "
+                      f"loss={loss.item():.4f}  (cls {loss_dict['classification'].item():.4f} "
+                      f"bbox {loss_dict['bbox_regression'].item():.4f})  "
+                      f"{its:.2f} it/s  gpu_mem={mem_mb:.0f} MB")
 
     scheduler.step()
     if n_batches == 0:
         print("No batches processed — aborting epoch."); continue
 
-    avg_cls = running["classification"] / n_batches
-    avg_bbox = running["bbox_regression"] / n_batches
     avg_total = running["total"] / n_batches
     lr_bb, lr_hd = optimizer.param_groups[0]["lr"], optimizer.param_groups[1]["lr"]
-    print(f"Epoch {epoch} train | total={avg_total:.4f} cls={avg_cls:.4f} bbox={avg_bbox:.4f} "
-          f"| LR bb={lr_bb:.2e} head={lr_hd:.2e} | {n_batches} batches in {time.time()-t0:.1f}s")
+    if USE_YOLO:
+        avg_cls  = running["cls"]  / n_batches
+        avg_ciou = running["ciou"] / n_batches
+        avg_dfl  = running["dfl"]  / n_batches
+        print(f"Epoch {epoch} train | total={avg_total:.4f} cls={avg_cls:.4f} "
+              f"ciou={avg_ciou:.4f} dfl={avg_dfl:.4f} "
+              f"| LR bb={lr_bb:.2e} head={lr_hd:.2e} | {n_batches} batches in {time.time()-t0:.1f}s")
+    else:
+        avg_cls  = running["classification"]  / n_batches
+        avg_bbox = running["bbox_regression"] / n_batches
+        print(f"Epoch {epoch} train | total={avg_total:.4f} cls={avg_cls:.4f} bbox={avg_bbox:.4f} "
+              f"| LR bb={lr_bb:.2e} head={lr_hd:.2e} | {n_batches} batches in {time.time()-t0:.1f}s")
 
     if do_eval:
         # Eval the EMA model (smoother weights → better mAP) when available

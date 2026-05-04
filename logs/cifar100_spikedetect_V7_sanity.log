@@ -1,0 +1,150 @@
+=== Experiment V7_sanity: V7 1-epoch sanity check (full train + eval) ===
+Log: /workspace/SNN/logs/cifar100_spikedetect_V7_sanity.log
+dataset=coco batch=10 img=416 epochs=1 warmup=0 amp=True
+backbone_source=imagenet_ann  warm_start=cifar100_spikedetect_V5_kd_best.pth scope=backbone_only  aug=strong
+USE_KD=True  USE_SPIKING_HEAD=False
+loading annotations into memory...
+Done (t=12.23s)
+creating index...
+index created!
+Wrapped train_set with MosaicDetection (prob=0.5)
+loading annotations into memory...
+Done (t=0.53s)
+creating index...
+index created!
+Train batches: 11828  Val batches: 500
+num_classes=81 (incl. background)
+[SEWBackboneForDetection:imagenet_ann] loaded 660 keys, skipped 0, still-missing 240
+Warm-started from cifar100_spikedetect_V5_kd_best.pth (scope=backbone_only): loaded 900 keys, skipped 24
+Total params: 17,414,811  Trainable: 17,263,251
+Loading ANN teacher: torchvision RetinaNet-R50-FPN-v2 @ 416...
+Backbone trainable: 11,092,192
+Head/FPN trainable: 6,171,059
+USE_EMA=True  USE_PROGRESSIVE_UNFREEZE=True
+No resume checkpoint — fresh start for this experiment.
+--- Epoch 0: unfreezing 1/4 backbone layer-groups, trainable params 14,611,071 ---
+  iter 0/11828  loss=115.5244  (cls 58.4523 ciou 3.4827 dfl 4.2430)  0.09 it/s  gpu_mem=17910 MB
+  iter 100/11828  loss=68.7090  (cls 28.7849 ciou 2.3992 dfl 2.9692)  1.38 it/s  gpu_mem=18427 MB
+  iter 200/11828  loss=45.1687  (cls 11.6455 ciou 2.4483 dfl 2.5611)  1.49 it/s  gpu_mem=18428 MB
+  iter 300/11828  loss=32.9844  (cls 5.8703 ciou 2.5462 dfl 2.7603)  1.52 it/s  gpu_mem=18429 MB
+  iter 400/11828  loss=31.2284  (cls 4.5293 ciou 2.6893 dfl 2.7309)  1.55 it/s  gpu_mem=18429 MB
+  iter 500/11828  loss=32.8060  (cls 4.6274 ciou 2.2916 dfl 2.1058)  1.56 it/s  gpu_mem=18429 MB
+  iter 600/11828  loss=30.8621  (cls 4.9941 ciou 2.1637 dfl 2.0682)  1.57 it/s  gpu_mem=18429 MB
+  iter 700/11828  loss=28.4947  (cls 3.9165 ciou 1.9697 dfl 2.0707)  1.57 it/s  gpu_mem=18429 MB
+  iter 800/11828  loss=27.8442  (cls 3.8187 ciou 2.0093 dfl 1.8961)  1.58 it/s  gpu_mem=18429 MB
+  iter 900/11828  loss=26.8361  (cls 3.5011 ciou 2.3317 dfl 2.2906)  1.58 it/s  gpu_mem=18429 MB
+  iter 1000/11828  loss=25.0438  (cls 3.0886 ciou 2.1441 dfl 1.8298)  1.58 it/s  gpu_mem=18429 MB
+  iter 1100/11828  loss=26.4956  (cls 3.4050 ciou 2.4775 dfl 2.4215)  1.59 it/s  gpu_mem=18429 MB
+  iter 1200/11828  loss=25.7303  (cls 3.2997 ciou 2.5830 dfl 2.5572)  1.59 it/s  gpu_mem=18429 MB
+  iter 1300/11828  loss=24.8393  (cls 2.8009 ciou 2.0183 dfl 1.8186)  1.59 it/s  gpu_mem=18429 MB
+  iter 1400/11828  loss=24.3694  (cls 3.0711 ciou 1.8777 dfl 1.9555)  1.59 it/s  gpu_mem=18429 MB
+  iter 1500/11828  loss=22.8635  (cls 3.1613 ciou 2.0276 dfl 1.7416)  1.59 it/s  gpu_mem=18429 MB
+  iter 1600/11828  loss=25.6016  (cls 3.1114 ciou 2.3310 dfl 2.3645)  1.59 it/s  gpu_mem=18429 MB
+  iter 1700/11828  loss=24.4900  (cls 2.4523 ciou 2.0223 dfl 1.8557)  1.60 it/s  gpu_mem=18429 MB
+  iter 1800/11828  loss=24.1576  (cls 2.6801 ciou 2.0459 dfl 1.8751)  1.60 it/s  gpu_mem=18429 MB
+  iter 1900/11828  loss=24.5894  (cls 2.9552 ciou 2.2319 dfl 2.0329)  1.60 it/s  gpu_mem=18429 MB
+  iter 2000/11828  loss=26.0009  (cls 3.2245 ciou 2.5078 dfl 2.3717)  1.60 it/s  gpu_mem=18429 MB
+  iter 2100/11828  loss=24.5428  (cls 2.6921 ciou 2.0626 dfl 1.7732)  1.60 it/s  gpu_mem=18429 MB
+  iter 2200/11828  loss=24.2743  (cls 2.9110 ciou 2.3219 dfl 2.2206)  1.60 it/s  gpu_mem=18429 MB
+  iter 2300/11828  loss=23.7829  (cls 2.8433 ciou 2.2892 dfl 2.1120)  1.60 it/s  gpu_mem=18429 MB
+  iter 2400/11828  loss=22.4750  (cls 2.3974 ciou 2.0392 dfl 1.7640)  1.60 it/s  gpu_mem=18429 MB
+  iter 2500/11828  loss=25.4067  (cls 3.2390 ciou 2.3175 dfl 2.3310)  1.60 it/s  gpu_mem=18429 MB
+  iter 2600/11828  loss=24.1742  (cls 2.9683 ciou 2.3988 dfl 2.1215)  1.60 it/s  gpu_mem=18429 MB
+  iter 2700/11828  loss=24.6791  (cls 2.2418 ciou 1.9608 dfl 1.6899)  1.60 it/s  gpu_mem=18429 MB
+  iter 2800/11828  loss=23.6188  (cls 2.3270 ciou 1.6261 dfl 1.6198)  1.60 it/s  gpu_mem=18429 MB
+  iter 2900/11828  loss=24.9767  (cls 3.0796 ciou 2.5259 dfl 2.2684)  1.60 it/s  gpu_mem=18429 MB
+  iter 3000/11828  loss=22.1210  (cls 2.0649 ciou 1.8563 dfl 1.5630)  1.60 it/s  gpu_mem=18429 MB
+  iter 3100/11828  loss=23.7124  (cls 3.0165 ciou 2.4933 dfl 2.0775)  1.60 it/s  gpu_mem=18429 MB
+  iter 3200/11828  loss=22.9436  (cls 2.4277 ciou 1.8661 dfl 1.8296)  1.60 it/s  gpu_mem=18429 MB
+  iter 3300/11828  loss=23.5292  (cls 2.0971 ciou 1.9643 dfl 1.7565)  1.60 it/s  gpu_mem=18429 MB
+  iter 3400/11828  loss=23.9263  (cls 3.0253 ciou 2.3272 dfl 2.1180)  1.60 it/s  gpu_mem=18429 MB
+  iter 3500/11828  loss=23.7780  (cls 2.6830 ciou 2.2718 dfl 2.0509)  1.60 it/s  gpu_mem=18429 MB
+  iter 3600/11828  loss=22.6884  (cls 2.8015 ciou 2.1433 dfl 2.0738)  1.60 it/s  gpu_mem=18429 MB
+  iter 3700/11828  loss=24.3692  (cls 2.2906 ciou 1.8181 dfl 1.7570)  1.60 it/s  gpu_mem=18429 MB
+  iter 3800/11828  loss=22.8717  (cls 3.0742 ciou 2.5905 dfl 2.2088)  1.60 it/s  gpu_mem=18429 MB
+  iter 3900/11828  loss=25.0894  (cls 3.1270 ciou 2.4704 dfl 2.2678)  1.60 it/s  gpu_mem=18429 MB
+  iter 4000/11828  loss=22.7808  (cls 2.8294 ciou 2.5221 dfl 2.0422)  1.60 it/s  gpu_mem=18429 MB
+  iter 4100/11828  loss=23.9660  (cls 2.5270 ciou 2.0543 dfl 2.0212)  1.60 it/s  gpu_mem=18429 MB
+  iter 4200/11828  loss=23.3190  (cls 1.9970 ciou 1.7911 dfl 1.6478)  1.60 it/s  gpu_mem=18429 MB
+  iter 4300/11828  loss=23.4588  (cls 2.6293 ciou 2.3362 dfl 2.0621)  1.60 it/s  gpu_mem=18429 MB
+  iter 4400/11828  loss=21.7371  (cls 2.5294 ciou 2.1094 dfl 1.8642)  1.60 it/s  gpu_mem=18429 MB
+  iter 4500/11828  loss=22.6980  (cls 2.5009 ciou 2.2721 dfl 1.9370)  1.60 it/s  gpu_mem=18429 MB
+  iter 4600/11828  loss=20.9122  (cls 2.2189 ciou 1.7197 dfl 1.5337)  1.60 it/s  gpu_mem=18429 MB
+  iter 4700/11828  loss=22.8655  (cls 2.6001 ciou 2.3010 dfl 1.9252)  1.60 it/s  gpu_mem=18429 MB
+  iter 4800/11828  loss=19.8894  (cls 2.1077 ciou 1.7240 dfl 1.5317)  1.60 it/s  gpu_mem=18429 MB
+  iter 4900/11828  loss=23.2591  (cls 2.7609 ciou 2.2555 dfl 1.9367)  1.60 it/s  gpu_mem=18429 MB
+  iter 5000/11828  loss=21.1316  (cls 2.0136 ciou 1.8917 dfl 1.7149)  1.61 it/s  gpu_mem=18429 MB
+  iter 5100/11828  loss=22.8967  (cls 2.4740 ciou 2.3075 dfl 1.9687)  1.61 it/s  gpu_mem=18429 MB
+  iter 5200/11828  loss=22.3178  (cls 1.8657 ciou 1.9356 dfl 1.6278)  1.61 it/s  gpu_mem=18429 MB
+  iter 5300/11828  loss=22.9351  (cls 2.0145 ciou 1.8440 dfl 1.5987)  1.61 it/s  gpu_mem=18429 MB
+  iter 5400/11828  loss=21.7538  (cls 2.0279 ciou 1.8755 dfl 1.6167)  1.61 it/s  gpu_mem=18429 MB
+  iter 5500/11828  loss=22.5193  (cls 1.7938 ciou 1.7752 dfl 1.7008)  1.61 it/s  gpu_mem=18429 MB
+  iter 5600/11828  loss=21.1458  (cls 2.2820 ciou 1.8307 dfl 1.6622)  1.61 it/s  gpu_mem=18429 MB
+  iter 5700/11828  loss=22.4483  (cls 2.5403 ciou 2.2717 dfl 2.0944)  1.61 it/s  gpu_mem=18429 MB
+  iter 5800/11828  loss=22.6020  (cls 2.6761 ciou 2.2761 dfl 1.9643)  1.61 it/s  gpu_mem=18429 MB
+  iter 5900/11828  loss=22.0502  (cls 2.2001 ciou 1.8219 dfl 1.6412)  1.61 it/s  gpu_mem=18429 MB
+  iter 6000/11828  loss=23.2783  (cls 2.7186 ciou 2.3988 dfl 2.0005)  1.61 it/s  gpu_mem=18429 MB
+  iter 6100/11828  loss=21.6450  (cls 2.2699 ciou 1.9988 dfl 1.6980)  1.61 it/s  gpu_mem=18429 MB
+  iter 6200/11828  loss=23.2899  (cls 2.9404 ciou 2.4380 dfl 2.0650)  1.61 it/s  gpu_mem=18429 MB
+  iter 6300/11828  loss=20.3378  (cls 2.1072 ciou 1.6920 dfl 1.6977)  1.61 it/s  gpu_mem=18429 MB
+  iter 6400/11828  loss=23.2393  (cls 2.9429 ciou 2.6336 dfl 2.1737)  1.61 it/s  gpu_mem=18429 MB
+  iter 6500/11828  loss=22.3030  (cls 2.7061 ciou 2.4024 dfl 1.9968)  1.61 it/s  gpu_mem=18429 MB
+  iter 6600/11828  loss=23.5932  (cls 2.9856 ciou 2.3820 dfl 2.1164)  1.61 it/s  gpu_mem=18429 MB
+  iter 6700/11828  loss=21.7953  (cls 2.0863 ciou 1.5985 dfl 1.5364)  1.61 it/s  gpu_mem=18429 MB
+  iter 6800/11828  loss=22.8504  (cls 2.8681 ciou 2.2924 dfl 1.9068)  1.61 it/s  gpu_mem=18429 MB
+  iter 6900/11828  loss=23.7755  (cls 2.1495 ciou 1.8047 dfl 1.5538)  1.61 it/s  gpu_mem=18429 MB
+  iter 7000/11828  loss=22.0327  (cls 2.6807 ciou 2.3929 dfl 2.0739)  1.61 it/s  gpu_mem=18429 MB
+  iter 7100/11828  loss=20.7150  (cls 1.9584 ciou 1.9437 dfl 1.5848)  1.61 it/s  gpu_mem=18429 MB
+  iter 7200/11828  loss=21.7327  (cls 2.0930 ciou 1.7841 dfl 1.5939)  1.61 it/s  gpu_mem=18429 MB
+  iter 7300/11828  loss=25.0088  (cls 2.1566 ciou 1.8932 dfl 1.6726)  1.61 it/s  gpu_mem=18429 MB
+  iter 7400/11828  loss=21.6856  (cls 1.8126 ciou 1.5960 dfl 1.5490)  1.61 it/s  gpu_mem=18429 MB
+  iter 7500/11828  loss=22.5233  (cls 1.8295 ciou 1.9756 dfl 1.6136)  1.61 it/s  gpu_mem=18429 MB
+  iter 7600/11828  loss=24.6910  (cls 2.9884 ciou 2.3402 dfl 2.0251)  1.61 it/s  gpu_mem=18429 MB
+  iter 7700/11828  loss=20.8440  (cls 2.7808 ciou 2.3496 dfl 1.8617)  1.61 it/s  gpu_mem=18429 MB
+  iter 7800/11828  loss=22.8043  (cls 2.9921 ciou 2.5287 dfl 2.0939)  1.61 it/s  gpu_mem=18429 MB
+  iter 7900/11828  loss=23.0140  (cls 2.0641 ciou 1.9799 dfl 1.6823)  1.61 it/s  gpu_mem=18429 MB
+  iter 8000/11828  loss=24.4712  (cls 2.1505 ciou 1.9022 dfl 1.6827)  1.61 it/s  gpu_mem=18429 MB
+  iter 8100/11828  loss=23.2827  (cls 2.7722 ciou 2.3392 dfl 1.9449)  1.61 it/s  gpu_mem=18429 MB
+  iter 8200/11828  loss=22.0867  (cls 2.0311 ciou 1.8748 dfl 1.5450)  1.61 it/s  gpu_mem=18429 MB
+  iter 8300/11828  loss=21.5583  (cls 1.9298 ciou 1.8743 dfl 1.7351)  1.61 it/s  gpu_mem=18429 MB
+  iter 8400/11828  loss=24.2940  (cls 2.9196 ciou 2.4286 dfl 2.0407)  1.61 it/s  gpu_mem=18429 MB
+  iter 8500/11828  loss=24.3498  (cls 2.9461 ciou 2.4386 dfl 2.0763)  1.61 it/s  gpu_mem=18429 MB
+  iter 8600/11828  loss=20.7014  (cls 1.7340 ciou 1.6120 dfl 1.5339)  1.61 it/s  gpu_mem=18429 MB
+  iter 8700/11828  loss=21.7607  (cls 1.8948 ciou 1.6475 dfl 1.5023)  1.61 it/s  gpu_mem=18429 MB
+  iter 8800/11828  loss=21.2927  (cls 2.1427 ciou 1.7597 dfl 1.5388)  1.61 it/s  gpu_mem=18429 MB
+  iter 8900/11828  loss=21.6895  (cls 2.1285 ciou 1.9010 dfl 1.6354)  1.61 it/s  gpu_mem=18429 MB
+  iter 9000/11828  loss=22.9274  (cls 2.8593 ciou 2.4391 dfl 2.0892)  1.61 it/s  gpu_mem=18429 MB
+  iter 9100/11828  loss=21.4559  (cls 2.5761 ciou 2.4577 dfl 1.8359)  1.61 it/s  gpu_mem=18429 MB
+  iter 9200/11828  loss=22.8643  (cls 1.8116 ciou 1.9032 dfl 1.5436)  1.61 it/s  gpu_mem=18429 MB
+  iter 9300/11828  loss=20.2568  (cls 1.7915 ciou 1.7914 dfl 1.5977)  1.61 it/s  gpu_mem=18429 MB
+  iter 9400/11828  loss=22.2452  (cls 2.5144 ciou 2.2323 dfl 1.9016)  1.61 it/s  gpu_mem=18429 MB
+  iter 9500/11828  loss=23.3195  (cls 2.8529 ciou 2.2680 dfl 1.9383)  1.61 it/s  gpu_mem=18429 MB
+  iter 9600/11828  loss=22.0132  (cls 2.0212 ciou 2.0007 dfl 1.7284)  1.61 it/s  gpu_mem=18429 MB
+  iter 9700/11828  loss=23.5895  (cls 3.0077 ciou 2.4965 dfl 2.1031)  1.61 it/s  gpu_mem=18429 MB
+  iter 9800/11828  loss=20.8987  (cls 1.9475 ciou 1.7114 dfl 1.5737)  1.61 it/s  gpu_mem=18429 MB
+  iter 9900/11828  loss=20.1524  (cls 2.1238 ciou 1.7543 dfl 1.6154)  1.61 it/s  gpu_mem=18429 MB
+  iter 10000/11828  loss=22.7785  (cls 2.7880 ciou 2.2742 dfl 1.8589)  1.61 it/s  gpu_mem=18429 MB
+  iter 10100/11828  loss=22.9533  (cls 2.3052 ciou 1.8150 dfl 1.6439)  1.61 it/s  gpu_mem=18429 MB
+  iter 10200/11828  loss=21.1539  (cls 1.9595 ciou 1.7679 dfl 1.5318)  1.61 it/s  gpu_mem=18429 MB
+  iter 10300/11828  loss=21.6125  (cls 2.0001 ciou 1.6777 dfl 1.4818)  1.61 it/s  gpu_mem=18429 MB
+  iter 10400/11828  loss=23.7086  (cls 2.9056 ciou 2.2195 dfl 1.9942)  1.61 it/s  gpu_mem=18429 MB
+  iter 10500/11828  loss=20.6617  (cls 2.1010 ciou 1.6327 dfl 1.6606)  1.61 it/s  gpu_mem=18429 MB
+  iter 10600/11828  loss=23.7537  (cls 2.4952 ciou 2.2300 dfl 1.8722)  1.61 it/s  gpu_mem=18429 MB
+  iter 10700/11828  loss=22.4488  (cls 2.6174 ciou 1.9342 dfl 1.7434)  1.61 it/s  gpu_mem=18429 MB
+  iter 10800/11828  loss=21.6502  (cls 2.8986 ciou 2.0907 dfl 1.8215)  1.61 it/s  gpu_mem=18429 MB
+  iter 10900/11828  loss=23.4406  (cls 2.7060 ciou 2.4633 dfl 1.9087)  1.61 it/s  gpu_mem=18429 MB
+  iter 11000/11828  loss=21.1926  (cls 1.6493 ciou 1.6095 dfl 1.4633)  1.61 it/s  gpu_mem=18429 MB
+  iter 11100/11828  loss=24.0960  (cls 2.7451 ciou 2.1821 dfl 1.9167)  1.61 it/s  gpu_mem=18429 MB
+  iter 11200/11828  loss=21.7019  (cls 1.8649 ciou 1.8500 dfl 1.6628)  1.61 it/s  gpu_mem=18429 MB
+  iter 11300/11828  loss=23.4945  (cls 2.8478 ciou 2.2251 dfl 1.9414)  1.61 it/s  gpu_mem=18429 MB
+  iter 11400/11828  loss=22.0822  (cls 2.8643 ciou 2.1725 dfl 1.8624)  1.61 it/s  gpu_mem=18429 MB
+  iter 11500/11828  loss=21.5372  (cls 1.8782 ciou 1.8540 dfl 1.5698)  1.61 it/s  gpu_mem=18429 MB
+  iter 11600/11828  loss=23.2680  (cls 1.9638 ciou 1.7851 dfl 1.5616)  1.61 it/s  gpu_mem=18429 MB
+  iter 11700/11828  loss=22.8811  (cls 2.1846 ciou 1.8042 dfl 1.5827)  1.61 it/s  gpu_mem=18429 MB
+  iter 11800/11828  loss=20.9443  (cls 1.9653 ciou 1.8787 dfl 1.6384)  1.61 it/s  gpu_mem=18429 MB
+Epoch 0 train | total=24.1553 cls=3.1080 ciou=2.1093 dfl=1.8974 | LR bb=0.00e+00 head=0.00e+00 | 11828 batches in 7352.6s
+/workspace/SNN/venv/lib/python3.12/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encountered more than 100 detections in a single image. This means that certain detections with the lowest scores will be ignored, that may have an undesirable impact on performance. Please consider adjusting the `max_detection_threshold` to suit your use case. To disable this warning, set attribute class `warn_on_many_detections=False`, after initializing the metric.
+  warnings.warn(*args, **kwargs)
+Epoch 0 eval (EMA) | mAP@50=0.314  mAP@[.5:.95]=0.176
+>> Best saved at epoch 0 (mAP@50: 0.314) [EMA]
+Training complete.

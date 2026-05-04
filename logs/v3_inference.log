@@ -1,0 +1,31 @@
+=== objdet_test ===
+  150/2060  (1.2 fps eff)  last n_dets=8
+  200/2060  (1.2 fps eff)  last n_dets=8
+  250/2060  (1.2 fps eff)  last n_dets=8
+Saved: viz/v3_test/objdet_test_v3.mp4
+=== pedestrians ===
+  150/1091  (1.2 fps eff)  last n_dets=1
+  200/1091  (1.2 fps eff)  last n_dets=1
+  250/1091  (1.3 fps eff)  last n_dets=1
+Saved: viz/v3_test/pedestrians_v3.mp4
+=== zebra ===
+  100/226  (1.4 fps eff)  last n_dets=1
+  150/226  (1.5 fps eff)  last n_dets=1
+  200/226  (1.4 fps eff)  last n_dets=1
+Saved: viz/v3_test/zebra_v3.mp4
+=== giraffe ===
+  100/241  (1.2 fps eff)  last n_dets=3
+  150/241  (1.2 fps eff)  last n_dets=1
+  200/241  (1.2 fps eff)  last n_dets=1
+Saved: viz/v3_test/giraffe_v3.mp4
+=== bear ===
+  150/1925  (1.2 fps eff)  last n_dets=2
+  200/1925  (1.2 fps eff)  last n_dets=0
+  250/1925  (1.2 fps eff)  last n_dets=1
+Saved: viz/v3_test/bear_v3.mp4
+=== cat ===
+  150/250  (1.2 fps eff)  last n_dets=1
+  200/250  (1.1 fps eff)  last n_dets=1
+  250/250  (1.1 fps eff)  last n_dets=1
+Saved: viz/v3_test/cat_v3.mp4
+=== ALL DONE ===

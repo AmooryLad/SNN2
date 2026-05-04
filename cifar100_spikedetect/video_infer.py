@@ -25,6 +25,7 @@ from torchvision.ops import nms as tv_nms
 
 from cifar100_spikedetect.data import VOC_CLASSES
 from cifar100_spikedetect.model import build_retinanet
+from cifar100_spikedetect.yolov8_detector import build_yolov8_detector
 
 
 # --- CLI ----------------------------------------------------------------
@@ -62,19 +63,29 @@ ckpt = torch.load(ck_path, map_location=device, weights_only=False)
 classes = ckpt.get("classes", VOC_CLASSES)
 img_size = ckpt.get("img_size", args.img_size)
 
-model = build_retinanet(
-    num_classes=len(classes),
-    num_steps=ckpt.get("num_steps", 8),
-    backbone_ckpt=None,  # we load full checkpoint below
-    trainable_backbone_layers=3,
-    min_size=img_size,
-    max_size=img_size,
-)
-model.load_state_dict(ckpt["model_state_dict"])
+state = ckpt["model_state_dict"]
+is_yolov8 = any(k.startswith("head.cls_branches.") for k in state.keys())
+print(f"Detector type: {'YOLOv8 (V7/V8)' if is_yolov8 else 'RetinaNet (V3-V5)'}")
+if is_yolov8:
+    model = build_yolov8_detector(
+        num_classes=len(classes),
+        num_steps=ckpt.get("num_steps", 8),
+        backbone_source="none",
+        trainable_backbone_layers=4,
+    )
+    model.score_thresh = args.score_thresh
+else:
+    model = build_retinanet(
+        num_classes=len(classes),
+        num_steps=ckpt.get("num_steps", 8),
+        backbone_ckpt=None,
+        trainable_backbone_layers=3,
+        min_size=img_size,
+        max_size=img_size,
+    )
+    model.score_thresh = args.score_thresh
+model.load_state_dict(state, strict=False)
 model.to(device).eval()
-
-# Lower the default score threshold used by torchvision RetinaNet's post-process.
-model.score_thresh = args.score_thresh
 
 print(f"Loaded {args.checkpoint}  epoch {ckpt['epoch']}  mAP@50={ckpt.get('map', 0):.3f}")
 print(f"Classes: {len(classes)} (incl. background)  img_size={img_size}")

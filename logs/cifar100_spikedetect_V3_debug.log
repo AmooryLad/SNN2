@@ -1,0 +1,23 @@
+=== Experiment V3_debug: V3 smoke test — 50 iters, no eval ===
+Log: /workspace/SNN/logs/cifar100_spikedetect_V3_debug.log
+dataset=coco batch=20 img=416 epochs=1 warmup=0 amp=True
+backbone_source=imagenet_ann  warm_start=None scope=none  aug=basic
+USE_KD=False  USE_SPIKING_HEAD=False
+loading annotations into memory...
+Done (t=12.63s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.55s)
+creating index...
+index created!
+Train batches: 5914  Val batches: 250
+num_classes=81 (incl. background)
+[SEWBackboneForDetection:imagenet_ann] loaded 660 keys, skipped 0, still-missing 240
+Total params: 20,322,535  Trainable: 20,170,975
+Backbone trainable: 11,092,192
+Head/FPN trainable: 9,078,783
+No resume checkpoint — fresh start for this experiment.
+  iter 0/5914  loss=2.0543  (cls 1.1710 bbox 0.8832)  0.06 it/s  gpu_mem=21642 MB
+Epoch 0 train | total=3.2602 cls=2.3262 bbox=0.9340 | LR bb=0.00e+00 head=0.00e+00 | 50 batches in 51.2s
+Training complete.

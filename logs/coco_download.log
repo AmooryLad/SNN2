@@ -1,0 +1,14 @@
+=== annotations ===
+=== val images ===
+=== train images ===
+=== extracting ===
+=== DONE ===
+total 19936944
+drwxrwxr-x 5 root root         161 Apr 21 16:16 .
+drwxrwxr-x 6 root root          85 Apr 21 16:05 ..
+drwxrwxr-x 2 root root        4096 Apr 21 16:16 annotations
+-rw-rw-r-- 1 root root   252907541 Jul 10  2018 annotations_trainval2017.zip
+drwxrwxr-x 2 root root     8564736 Aug 31  2017 train2017
+-rw-rw-r-- 1 root root 19336861798 Jul 11  2018 train2017.zip
+drwxrwxr-x 2 root root      167936 Aug 31  2017 val2017
+-rw-rw-r-- 1 root root   815585330 Jul 11  2018 val2017.zip

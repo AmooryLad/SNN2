@@ -1,0 +1,14 @@
+=== Experiment V0_debug: M4 smoke — 50 iters, no eval ===
+Log: /workspace/SNN/logs/cifar100_detect_V0_debug.log
+batch=8 img=416 epochs=1 warmup=0 max_iters=50 eval=False
+Train batches: 714  Val batches: 728
+Training on 20 foreground classes
+[SEWBackboneForDetection] loaded 899 keys, skipped 7, own-keys missing 1
+  missing: ['conv_stem.weight']
+Total params: 19,907,635  Trainable: 19,756,075
+Backbone trainable params: 11,092,192
+Head/FPN trainable params: 8,663,883
+No checkpoint — fresh start.
+  iter 0/714  loss=1.8650  (cls 1.1422 bbox 0.7228)  0.63 it/s
+Epoch 0 train | total=2.4640 cls=1.7515 bbox=0.7125 | LR bb=0.00e+00 head=0.00e+00 | 50 batches in 19.3s
+Training complete.

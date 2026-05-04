@@ -1,0 +1,548 @@
+=== Experiment V1: M5 production run ===
+Log: /workspace/SNN/logs/cifar100_detect_V1.log
+batch=8 img=416 epochs=30 warmup=5 max_iters=None eval=True
+Train batches: 714  Val batches: 728
+Training on 20 foreground classes
+[SEWBackboneForDetection] loaded 899 keys, skipped 7, own-keys missing 1
+  missing: ['conv_stem.weight']
+Total params: 19,907,635  Trainable: 19,756,075
+Backbone trainable params: 11,092,192
+Head/FPN trainable params: 8,663,883
+No checkpoint — fresh start.
+  iter 0/714  loss=1.8650  (cls 1.1422 bbox 0.7228)  0.64 it/s
+  iter 50/714  loss=1.6056  (cls 0.7682 bbox 0.8374)  2.60 it/s
+  iter 100/714  loss=1.4446  (cls 0.8089 bbox 0.6357)  2.68 it/s
+  iter 150/714  loss=1.3400  (cls 0.7073 bbox 0.6328)  2.71 it/s
+  iter 200/714  loss=1.4619  (cls 0.7392 bbox 0.7228)  2.73 it/s
+  iter 250/714  loss=1.4017  (cls 0.7742 bbox 0.6274)  2.73 it/s
+  iter 300/714  loss=1.7552  (cls 0.8586 bbox 0.8966)  2.74 it/s
+  iter 350/714  loss=1.2533  (cls 0.7866 bbox 0.4667)  2.74 it/s
+  iter 400/714  loss=1.3937  (cls 0.7704 bbox 0.6233)  2.74 it/s
+  iter 450/714  loss=1.3661  (cls 0.7569 bbox 0.6093)  2.74 it/s
+  iter 500/714  loss=1.2295  (cls 0.6340 bbox 0.5955)  2.75 it/s
+  iter 550/714  loss=1.0786  (cls 0.6987 bbox 0.3799)  2.75 it/s
+  iter 600/714  loss=1.2807  (cls 0.7623 bbox 0.5185)  2.75 it/s
+  iter 650/714  loss=1.3653  (cls 0.8251 bbox 0.5402)  2.75 it/s
+  iter 700/714  loss=1.4660  (cls 0.7667 bbox 0.6993)  2.75 it/s
+Epoch 0 train | total=1.3832 cls=0.7756 bbox=0.6076 | LR bb=2.00e-05 head=2.00e-04 | 714 batches in 259.7s
+/workspace/SNN/venv/lib/python3.12/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encountered more than 100 detections in a single image. This means that certain detections with the lowest scores will be ignored, that may have an undesirable impact on performance. Please consider adjusting the `max_detection_threshold` to suit your use case. To disable this warning, set attribute class `warn_on_many_detections=False`, after initializing the metric.
+  warnings.warn(*args, **kwargs)
+Epoch 0 eval | mAP@50=0.017  mAP@[.5:.95]=0.005
+>> Best saved at epoch 0 (mAP@50: 0.017)
+  iter 0/714  loss=1.2052  (cls 0.6605 bbox 0.5447)  1.73 it/s
+  iter 50/714  loss=1.0729  (cls 0.6876 bbox 0.3853)  2.74 it/s
+  iter 100/714  loss=1.0734  (cls 0.6190 bbox 0.4545)  2.74 it/s
+  iter 150/714  loss=1.4010  (cls 0.8489 bbox 0.5521)  2.75 it/s
+  iter 200/714  loss=1.3298  (cls 0.6652 bbox 0.6647)  2.75 it/s
+  iter 250/714  loss=1.4098  (cls 0.7440 bbox 0.6658)  2.75 it/s
+  iter 300/714  loss=1.2830  (cls 0.6641 bbox 0.6189)  2.69 it/s
+  iter 350/714  loss=1.5261  (cls 0.8416 bbox 0.6845)  2.70 it/s
+  iter 400/714  loss=1.3051  (cls 0.7172 bbox 0.5879)  2.71 it/s
+  iter 450/714  loss=1.3755  (cls 0.7055 bbox 0.6700)  2.71 it/s
+  iter 500/714  loss=1.1947  (cls 0.7201 bbox 0.4746)  2.71 it/s
+  iter 550/714  loss=1.1887  (cls 0.6422 bbox 0.5465)  2.72 it/s
+  iter 600/714  loss=1.2741  (cls 0.6955 bbox 0.5786)  2.72 it/s
+  iter 650/714  loss=1.4914  (cls 0.8182 bbox 0.6733)  2.72 it/s
+  iter 700/714  loss=1.1595  (cls 0.6716 bbox 0.4880)  2.72 it/s
+Epoch 1 train | total=1.2876 cls=0.7262 bbox=0.5614 | LR bb=3.00e-05 head=3.00e-04 | 714 batches in 262.0s
+Epoch 1 eval | mAP@50=0.030  mAP@[.5:.95]=0.010
+>> Best saved at epoch 1 (mAP@50: 0.030)
+  iter 0/714  loss=1.1420  (cls 0.5772 bbox 0.5648)  1.78 it/s
+  iter 50/714  loss=1.2744  (cls 0.7644 bbox 0.5100)  2.75 it/s
+  iter 100/714  loss=1.3223  (cls 0.6940 bbox 0.6283)  2.76 it/s
+  iter 150/714  loss=1.5921  (cls 1.0791 bbox 0.5130)  2.76 it/s
+  iter 200/714  loss=1.2966  (cls 0.7371 bbox 0.5594)  2.76 it/s
+  iter 250/714  loss=1.2765  (cls 0.7626 bbox 0.5139)  2.76 it/s
+  iter 300/714  loss=1.1113  (cls 0.6584 bbox 0.4530)  2.76 it/s
+  iter 350/714  loss=1.1495  (cls 0.7618 bbox 0.3877)  2.76 it/s
+  iter 400/714  loss=1.3656  (cls 0.7697 bbox 0.5959)  2.76 it/s
+  iter 450/714  loss=1.2426  (cls 0.6958 bbox 0.5468)  2.76 it/s
+  iter 500/714  loss=1.1855  (cls 0.6961 bbox 0.4894)  2.76 it/s
+  iter 550/714  loss=1.1414  (cls 0.6831 bbox 0.4582)  2.76 it/s
+  iter 600/714  loss=1.2980  (cls 0.6345 bbox 0.6635)  2.76 it/s
+  iter 650/714  loss=1.2453  (cls 0.7318 bbox 0.5135)  2.76 it/s
+  iter 700/714  loss=1.1721  (cls 0.5886 bbox 0.5835)  2.76 it/s
+Epoch 2 train | total=1.2410 cls=0.7014 bbox=0.5396 | LR bb=4.00e-05 head=4.00e-04 | 714 batches in 259.1s
+Epoch 2 eval | mAP@50=0.037  mAP@[.5:.95]=0.013
+>> Best saved at epoch 2 (mAP@50: 0.037)
+  iter 0/714  loss=1.2464  (cls 0.6727 bbox 0.5737)  1.76 it/s
+  iter 50/714  loss=1.2719  (cls 0.7429 bbox 0.5290)  2.75 it/s
+  iter 100/714  loss=1.2684  (cls 0.7308 bbox 0.5376)  2.75 it/s
+  iter 150/714  loss=1.1757  (cls 0.6438 bbox 0.5319)  2.76 it/s
+  iter 200/714  loss=1.0560  (cls 0.6201 bbox 0.4359)  2.76 it/s
+  iter 250/714  loss=1.2206  (cls 0.7564 bbox 0.4642)  2.76 it/s
+  iter 300/714  loss=1.1521  (cls 0.5468 bbox 0.6053)  2.76 it/s
+  iter 350/714  loss=1.4965  (cls 0.6970 bbox 0.7995)  2.76 it/s
+  iter 400/714  loss=1.2725  (cls 0.6334 bbox 0.6391)  2.76 it/s
+  iter 450/714  loss=1.3412  (cls 0.7305 bbox 0.6106)  2.76 it/s
+  iter 500/714  loss=1.1324  (cls 0.6814 bbox 0.4510)  2.76 it/s
+  iter 550/714  loss=1.0017  (cls 0.5969 bbox 0.4048)  2.76 it/s
+  iter 600/714  loss=1.1079  (cls 0.6326 bbox 0.4754)  2.76 it/s
+  iter 650/714  loss=1.2826  (cls 0.6858 bbox 0.5968)  2.76 it/s
+  iter 700/714  loss=0.9698  (cls 0.5813 bbox 0.3885)  2.76 it/s
+Epoch 3 train | total=1.1980 cls=0.6757 bbox=0.5222 | LR bb=5.00e-05 head=5.00e-04 | 714 batches in 259.1s
+Epoch 3 eval | mAP@50=0.048  mAP@[.5:.95]=0.016
+>> Best saved at epoch 3 (mAP@50: 0.048)
+  iter 0/714  loss=1.2393  (cls 0.6978 bbox 0.5415)  1.89 it/s
+  iter 50/714  loss=0.9501  (cls 0.5169 bbox 0.4331)  2.75 it/s
+  iter 100/714  loss=1.2567  (cls 0.6295 bbox 0.6272)  2.76 it/s
+  iter 150/714  loss=0.9481  (cls 0.4780 bbox 0.4701)  2.76 it/s
+  iter 200/714  loss=1.1362  (cls 0.6712 bbox 0.4649)  2.76 it/s
+  iter 250/714  loss=1.2943  (cls 0.7241 bbox 0.5702)  2.76 it/s
+  iter 300/714  loss=1.3301  (cls 0.7558 bbox 0.5743)  2.76 it/s
+  iter 350/714  loss=1.1680  (cls 0.7218 bbox 0.4462)  2.76 it/s
+  iter 400/714  loss=1.1190  (cls 0.5934 bbox 0.5256)  2.76 it/s
+  iter 450/714  loss=1.1342  (cls 0.6770 bbox 0.4572)  2.76 it/s
+  iter 500/714  loss=0.9897  (cls 0.5880 bbox 0.4017)  2.76 it/s
+  iter 550/714  loss=1.3586  (cls 0.6961 bbox 0.6625)  2.76 it/s
+  iter 600/714  loss=1.1757  (cls 0.7272 bbox 0.4485)  2.76 it/s
+  iter 650/714  loss=1.1380  (cls 0.6420 bbox 0.4961)  2.76 it/s
+  iter 700/714  loss=1.2723  (cls 0.7236 bbox 0.5486)  2.75 it/s
+Epoch 4 train | total=1.1744 cls=0.6637 bbox=0.5107 | LR bb=5.00e-05 head=5.00e-04 | 714 batches in 259.2s
+Epoch 4 eval | mAP@50=0.047  mAP@[.5:.95]=0.016
+  iter 0/714  loss=0.9242  (cls 0.6018 bbox 0.3224)  1.82 it/s
+  iter 50/714  loss=1.0016  (cls 0.5077 bbox 0.4939)  2.76 it/s
+  iter 100/714  loss=1.2544  (cls 0.6562 bbox 0.5982)  2.77 it/s
+  iter 150/714  loss=1.0330  (cls 0.6071 bbox 0.4259)  2.77 it/s
+  iter 200/714  loss=1.1979  (cls 0.6409 bbox 0.5570)  2.76 it/s
+  iter 250/714  loss=1.2340  (cls 0.6648 bbox 0.5692)  2.76 it/s
+  iter 300/714  loss=1.0788  (cls 0.6196 bbox 0.4593)  2.76 it/s
+  iter 350/714  loss=1.1509  (cls 0.6724 bbox 0.4785)  2.76 it/s
+  iter 400/714  loss=1.5766  (cls 0.7678 bbox 0.8088)  2.76 it/s
+  iter 450/714  loss=1.0550  (cls 0.5990 bbox 0.4561)  2.76 it/s
+  iter 500/714  loss=1.1623  (cls 0.6512 bbox 0.5111)  2.76 it/s
+  iter 550/714  loss=1.3006  (cls 0.6857 bbox 0.6149)  2.76 it/s
+  iter 600/714  loss=1.3842  (cls 0.6926 bbox 0.6916)  2.76 it/s
+  iter 650/714  loss=0.9680  (cls 0.5761 bbox 0.3919)  2.76 it/s
+  iter 700/714  loss=1.0426  (cls 0.5994 bbox 0.4431)  2.76 it/s
+Epoch 5 train | total=1.1259 cls=0.6319 bbox=0.4941 | LR bb=4.98e-05 head=4.98e-04 | 714 batches in 258.8s
+Epoch 5 eval | mAP@50=0.069  mAP@[.5:.95]=0.026
+>> Best saved at epoch 5 (mAP@50: 0.069)
+  iter 0/714  loss=0.8210  (cls 0.4893 bbox 0.3317)  1.93 it/s
+  iter 50/714  loss=1.0069  (cls 0.6398 bbox 0.3671)  2.76 it/s
+  iter 100/714  loss=1.0496  (cls 0.5637 bbox 0.4858)  2.76 it/s
+  iter 150/714  loss=1.4781  (cls 0.7614 bbox 0.7167)  2.76 it/s
+  iter 200/714  loss=1.0788  (cls 0.5384 bbox 0.5404)  2.76 it/s
+  iter 250/714  loss=1.2039  (cls 0.6757 bbox 0.5282)  2.76 it/s
+  iter 300/714  loss=1.1029  (cls 0.5772 bbox 0.5258)  2.76 it/s
+  iter 350/714  loss=1.1692  (cls 0.6504 bbox 0.5188)  2.76 it/s
+  iter 400/714  loss=0.8068  (cls 0.5052 bbox 0.3015)  2.76 it/s
+  iter 450/714  loss=1.0069  (cls 0.5684 bbox 0.4385)  2.76 it/s
+  iter 500/714  loss=1.2484  (cls 0.6406 bbox 0.6078)  2.76 it/s
+  iter 550/714  loss=1.3757  (cls 0.7667 bbox 0.6090)  2.76 it/s
+  iter 600/714  loss=0.9723  (cls 0.5257 bbox 0.4466)  2.76 it/s
+  iter 650/714  loss=0.9294  (cls 0.5833 bbox 0.3461)  2.76 it/s
+  iter 700/714  loss=1.1016  (cls 0.5959 bbox 0.5057)  2.76 it/s
+Epoch 6 train | total=1.0896 cls=0.6085 bbox=0.4810 | LR bb=4.92e-05 head=4.92e-04 | 714 batches in 258.8s
+Epoch 6 eval | mAP@50=0.086  mAP@[.5:.95]=0.035
+>> Best saved at epoch 6 (mAP@50: 0.086)
+  iter 0/714  loss=1.2264  (cls 0.6732 bbox 0.5532)  1.92 it/s
+  iter 50/714  loss=1.2259  (cls 0.6781 bbox 0.5478)  2.77 it/s
+  iter 100/714  loss=1.1299  (cls 0.5652 bbox 0.5647)  2.77 it/s
+  iter 150/714  loss=0.9778  (cls 0.5615 bbox 0.4163)  2.78 it/s
+  iter 200/714  loss=1.2122  (cls 0.6731 bbox 0.5391)  2.78 it/s
+  iter 250/714  loss=1.2023  (cls 0.6737 bbox 0.5286)  2.78 it/s
+  iter 300/714  loss=1.0247  (cls 0.5778 bbox 0.4469)  2.78 it/s
+  iter 350/714  loss=0.9230  (cls 0.5414 bbox 0.3816)  2.78 it/s
+  iter 400/714  loss=0.9000  (cls 0.4644 bbox 0.4357)  2.78 it/s
+  iter 450/714  loss=0.9183  (cls 0.5312 bbox 0.3871)  2.78 it/s
+  iter 500/714  loss=1.2540  (cls 0.7189 bbox 0.5351)  2.78 it/s
+  iter 550/714  loss=1.0951  (cls 0.5397 bbox 0.5554)  2.78 it/s
+  iter 600/714  loss=0.9288  (cls 0.6191 bbox 0.3097)  2.78 it/s
+  iter 650/714  loss=0.8721  (cls 0.4431 bbox 0.4289)  2.78 it/s
+  iter 700/714  loss=1.1817  (cls 0.6891 bbox 0.4926)  2.78 it/s
+Epoch 7 train | total=1.0711 cls=0.5966 bbox=0.4745 | LR bb=4.82e-05 head=4.82e-04 | 714 batches in 257.2s
+Epoch 7 eval | mAP@50=0.101  mAP@[.5:.95]=0.040
+>> Best saved at epoch 7 (mAP@50: 0.101)
+  iter 0/714  loss=0.9989  (cls 0.5673 bbox 0.4316)  1.83 it/s
+  iter 50/714  loss=0.9284  (cls 0.5613 bbox 0.3672)  2.77 it/s
+  iter 100/714  loss=0.9979  (cls 0.4500 bbox 0.5479)  2.78 it/s
+  iter 150/714  loss=0.8761  (cls 0.4727 bbox 0.4034)  2.78 it/s
+  iter 200/714  loss=1.1574  (cls 0.6450 bbox 0.5124)  2.78 it/s
+  iter 250/714  loss=0.9811  (cls 0.5662 bbox 0.4150)  2.78 it/s
+  iter 300/714  loss=1.1168  (cls 0.6109 bbox 0.5059)  2.78 it/s
+  iter 350/714  loss=1.1200  (cls 0.6420 bbox 0.4779)  2.78 it/s
+  iter 400/714  loss=0.9980  (cls 0.6253 bbox 0.3727)  2.78 it/s
+  iter 450/714  loss=1.0301  (cls 0.5836 bbox 0.4464)  2.78 it/s
+  iter 500/714  loss=1.3121  (cls 0.7168 bbox 0.5953)  2.77 it/s
+  iter 550/714  loss=1.1946  (cls 0.6703 bbox 0.5243)  2.77 it/s
+  iter 600/714  loss=1.0158  (cls 0.5384 bbox 0.4774)  2.77 it/s
+  iter 650/714  loss=0.9544  (cls 0.5924 bbox 0.3620)  2.77 it/s
+  iter 700/714  loss=0.9176  (cls 0.4509 bbox 0.4667)  2.77 it/s
+Epoch 8 train | total=1.0367 cls=0.5753 bbox=0.4614 | LR bb=4.69e-05 head=4.69e-04 | 714 batches in 257.7s
+Epoch 8 eval | mAP@50=0.120  mAP@[.5:.95]=0.047
+>> Best saved at epoch 8 (mAP@50: 0.120)
+  iter 0/714  loss=0.8856  (cls 0.5038 bbox 0.3817)  1.94 it/s
+  iter 50/714  loss=0.9551  (cls 0.5332 bbox 0.4219)  2.77 it/s
+  iter 100/714  loss=0.7078  (cls 0.3697 bbox 0.3381)  2.77 it/s
+  iter 150/714  loss=1.0071  (cls 0.5189 bbox 0.4882)  2.76 it/s
+  iter 200/714  loss=1.1949  (cls 0.6898 bbox 0.5051)  2.77 it/s
+  iter 250/714  loss=1.2049  (cls 0.6713 bbox 0.5336)  2.77 it/s
+  iter 300/714  loss=1.1836  (cls 0.6012 bbox 0.5825)  2.77 it/s
+  iter 350/714  loss=1.1116  (cls 0.6065 bbox 0.5051)  2.77 it/s
+  iter 400/714  loss=0.8226  (cls 0.4231 bbox 0.3995)  2.77 it/s
+  iter 450/714  loss=0.8860  (cls 0.4577 bbox 0.4283)  2.77 it/s
+  iter 500/714  loss=1.1725  (cls 0.6220 bbox 0.5504)  2.77 it/s
+  iter 550/714  loss=1.0642  (cls 0.5948 bbox 0.4694)  2.77 it/s
+  iter 600/714  loss=0.9382  (cls 0.5712 bbox 0.3670)  2.77 it/s
+  iter 650/714  loss=0.7331  (cls 0.4288 bbox 0.3043)  2.77 it/s
+  iter 700/714  loss=0.9742  (cls 0.5685 bbox 0.4057)  2.77 it/s
+Epoch 9 train | total=1.0169 cls=0.5630 bbox=0.4539 | LR bb=4.52e-05 head=4.52e-04 | 714 batches in 257.8s
+Epoch 9 eval | mAP@50=0.131  mAP@[.5:.95]=0.054
+>> Best saved at epoch 9 (mAP@50: 0.131)
+  iter 0/714  loss=0.8100  (cls 0.4335 bbox 0.3765)  1.99 it/s
+  iter 50/714  loss=0.7990  (cls 0.4493 bbox 0.3497)  2.77 it/s
+  iter 100/714  loss=0.8320  (cls 0.4539 bbox 0.3781)  2.77 it/s
+  iter 150/714  loss=0.7753  (cls 0.4670 bbox 0.3084)  2.77 it/s
+  iter 200/714  loss=0.8870  (cls 0.4876 bbox 0.3994)  2.77 it/s
+  iter 250/714  loss=0.8565  (cls 0.4372 bbox 0.4193)  2.77 it/s
+  iter 300/714  loss=0.7554  (cls 0.3937 bbox 0.3617)  2.77 it/s
+  iter 350/714  loss=0.9514  (cls 0.5164 bbox 0.4350)  2.77 it/s
+  iter 400/714  loss=1.1091  (cls 0.6014 bbox 0.5078)  2.77 it/s
+  iter 450/714  loss=0.9577  (cls 0.5527 bbox 0.4050)  2.77 it/s
+  iter 500/714  loss=0.8770  (cls 0.5311 bbox 0.3459)  2.77 it/s
+  iter 550/714  loss=1.0551  (cls 0.5776 bbox 0.4775)  2.77 it/s
+  iter 600/714  loss=0.8537  (cls 0.4624 bbox 0.3912)  2.77 it/s
+  iter 650/714  loss=0.7960  (cls 0.4017 bbox 0.3943)  2.77 it/s
+  iter 700/714  loss=1.1762  (cls 0.6191 bbox 0.5571)  2.77 it/s
+Epoch 10 train | total=0.9947 cls=0.5479 bbox=0.4468 | LR bb=4.32e-05 head=4.32e-04 | 714 batches in 257.9s
+Epoch 10 eval | mAP@50=0.142  mAP@[.5:.95]=0.060
+>> Best saved at epoch 10 (mAP@50: 0.142)
+  iter 0/714  loss=1.2861  (cls 0.7034 bbox 0.5826)  1.78 it/s
+  iter 50/714  loss=1.1999  (cls 0.6430 bbox 0.5568)  2.76 it/s
+  iter 100/714  loss=0.9805  (cls 0.5745 bbox 0.4060)  2.77 it/s
+  iter 150/714  loss=0.7797  (cls 0.4159 bbox 0.3638)  2.77 it/s
+  iter 200/714  loss=1.0574  (cls 0.5180 bbox 0.5395)  2.77 it/s
+  iter 250/714  loss=0.9562  (cls 0.5293 bbox 0.4270)  2.77 it/s
+  iter 300/714  loss=1.0139  (cls 0.5156 bbox 0.4984)  2.77 it/s
+  iter 350/714  loss=1.0418  (cls 0.5877 bbox 0.4541)  2.77 it/s
+  iter 400/714  loss=0.9088  (cls 0.4781 bbox 0.4306)  2.77 it/s
+  iter 450/714  loss=0.8053  (cls 0.5066 bbox 0.2987)  2.77 it/s
+  iter 500/714  loss=1.0700  (cls 0.6179 bbox 0.4521)  2.77 it/s
+  iter 550/714  loss=0.7591  (cls 0.4262 bbox 0.3329)  2.77 it/s
+  iter 600/714  loss=1.0514  (cls 0.6473 bbox 0.4041)  2.77 it/s
+  iter 650/714  loss=1.1729  (cls 0.5901 bbox 0.5828)  2.77 it/s
+  iter 700/714  loss=0.8598  (cls 0.4490 bbox 0.4107)  2.77 it/s
+Epoch 11 train | total=0.9715 cls=0.5333 bbox=0.4381 | LR bb=4.09e-05 head=4.09e-04 | 714 batches in 257.7s
+Epoch 11 eval | mAP@50=0.149  mAP@[.5:.95]=0.062
+>> Best saved at epoch 11 (mAP@50: 0.149)
+  iter 0/714  loss=0.7674  (cls 0.3793 bbox 0.3882)  1.74 it/s
+  iter 50/714  loss=0.8437  (cls 0.4453 bbox 0.3984)  2.76 it/s
+  iter 100/714  loss=0.8895  (cls 0.5003 bbox 0.3892)  2.77 it/s
+  iter 150/714  loss=0.9357  (cls 0.5333 bbox 0.4024)  2.77 it/s
+  iter 200/714  loss=0.6465  (cls 0.3393 bbox 0.3071)  2.77 it/s
+  iter 250/714  loss=0.9474  (cls 0.5334 bbox 0.4140)  2.77 it/s
+  iter 300/714  loss=1.0351  (cls 0.5078 bbox 0.5273)  2.77 it/s
+  iter 350/714  loss=0.8832  (cls 0.4749 bbox 0.4083)  2.77 it/s
+  iter 400/714  loss=0.8978  (cls 0.4982 bbox 0.3996)  2.77 it/s
+  iter 450/714  loss=0.8797  (cls 0.4531 bbox 0.4266)  2.77 it/s
+  iter 500/714  loss=0.9015  (cls 0.4676 bbox 0.4340)  2.77 it/s
+  iter 550/714  loss=1.0361  (cls 0.5766 bbox 0.4595)  2.77 it/s
+  iter 600/714  loss=0.9928  (cls 0.4612 bbox 0.5316)  2.77 it/s
+  iter 650/714  loss=0.7761  (cls 0.4553 bbox 0.3209)  2.77 it/s
+  iter 700/714  loss=0.5925  (cls 0.3305 bbox 0.2620)  2.77 it/s
+Epoch 12 train | total=0.9466 cls=0.5173 bbox=0.4293 | LR bb=3.84e-05 head=3.84e-04 | 714 batches in 257.7s
+Epoch 12 eval | mAP@50=0.155  mAP@[.5:.95]=0.067
+>> Best saved at epoch 12 (mAP@50: 0.155)
+  iter 0/714  loss=0.8540  (cls 0.4485 bbox 0.4055)  1.91 it/s
+  iter 50/714  loss=0.9529  (cls 0.4932 bbox 0.4598)  2.76 it/s
+  iter 100/714  loss=1.0897  (cls 0.6238 bbox 0.4659)  2.77 it/s
+  iter 150/714  loss=0.9470  (cls 0.5314 bbox 0.4155)  2.77 it/s
+  iter 200/714  loss=0.6471  (cls 0.3486 bbox 0.2985)  2.77 it/s
+  iter 250/714  loss=1.0148  (cls 0.5413 bbox 0.4734)  2.77 it/s
+  iter 300/714  loss=0.8758  (cls 0.4724 bbox 0.4034)  2.77 it/s
+  iter 350/714  loss=0.8940  (cls 0.4388 bbox 0.4552)  2.77 it/s
+  iter 400/714  loss=0.8596  (cls 0.4230 bbox 0.4366)  2.77 it/s
+  iter 450/714  loss=1.0023  (cls 0.6124 bbox 0.3899)  2.77 it/s
+  iter 500/714  loss=1.1294  (cls 0.6983 bbox 0.4311)  2.77 it/s
+  iter 550/714  loss=0.8195  (cls 0.5281 bbox 0.2914)  2.77 it/s
+  iter 600/714  loss=0.8280  (cls 0.4433 bbox 0.3847)  2.77 it/s
+  iter 650/714  loss=1.0918  (cls 0.6289 bbox 0.4628)  2.77 it/s
+  iter 700/714  loss=0.7986  (cls 0.4129 bbox 0.3857)  2.77 it/s
+Epoch 13 train | total=0.9272 cls=0.5068 bbox=0.4204 | LR bb=3.56e-05 head=3.56e-04 | 714 batches in 258.1s
+Epoch 13 eval | mAP@50=0.160  mAP@[.5:.95]=0.068
+>> Best saved at epoch 13 (mAP@50: 0.160)
+  iter 0/714  loss=0.7863  (cls 0.4498 bbox 0.3365)  1.93 it/s
+  iter 50/714  loss=0.9289  (cls 0.4885 bbox 0.4404)  2.76 it/s
+  iter 100/714  loss=0.8341  (cls 0.4434 bbox 0.3907)  2.77 it/s
+  iter 150/714  loss=0.9626  (cls 0.5040 bbox 0.4586)  2.77 it/s
+  iter 200/714  loss=0.7845  (cls 0.4338 bbox 0.3507)  2.77 it/s
+  iter 250/714  loss=0.8852  (cls 0.4350 bbox 0.4502)  2.77 it/s
+  iter 300/714  loss=0.9748  (cls 0.5026 bbox 0.4722)  2.77 it/s
+  iter 350/714  loss=0.7829  (cls 0.4311 bbox 0.3518)  2.77 it/s
+  iter 400/714  loss=1.0169  (cls 0.5409 bbox 0.4759)  2.77 it/s
+  iter 450/714  loss=0.6779  (cls 0.3651 bbox 0.3128)  2.77 it/s
+  iter 500/714  loss=0.9345  (cls 0.4250 bbox 0.5094)  2.77 it/s
+  iter 550/714  loss=0.8160  (cls 0.4598 bbox 0.3562)  2.77 it/s
+  iter 600/714  loss=0.6969  (cls 0.3799 bbox 0.3169)  2.77 it/s
+  iter 650/714  loss=0.8442  (cls 0.4967 bbox 0.3475)  2.77 it/s
+  iter 700/714  loss=0.8183  (cls 0.5333 bbox 0.2850)  2.77 it/s
+Epoch 14 train | total=0.9008 cls=0.4899 bbox=0.4109 | LR bb=3.27e-05 head=3.27e-04 | 714 batches in 257.7s
+Epoch 14 eval | mAP@50=0.172  mAP@[.5:.95]=0.072
+>> Best saved at epoch 14 (mAP@50: 0.172)
+  iter 0/714  loss=1.0042  (cls 0.5030 bbox 0.5012)  1.75 it/s
+  iter 50/714  loss=0.8679  (cls 0.4863 bbox 0.3816)  2.75 it/s
+  iter 100/714  loss=0.9646  (cls 0.5687 bbox 0.3959)  2.77 it/s
+  iter 150/714  loss=0.8875  (cls 0.4491 bbox 0.4384)  2.77 it/s
+  iter 200/714  loss=0.9407  (cls 0.5207 bbox 0.4200)  2.77 it/s
+  iter 250/714  loss=0.8466  (cls 0.3862 bbox 0.4604)  2.77 it/s
+  iter 300/714  loss=0.8910  (cls 0.4852 bbox 0.4057)  2.77 it/s
+  iter 350/714  loss=0.7192  (cls 0.3471 bbox 0.3721)  2.77 it/s
+  iter 400/714  loss=1.0661  (cls 0.5654 bbox 0.5008)  2.77 it/s
+  iter 450/714  loss=0.7471  (cls 0.3614 bbox 0.3857)  2.77 it/s
+  iter 500/714  loss=0.7042  (cls 0.3816 bbox 0.3226)  2.77 it/s
+  iter 550/714  loss=0.8860  (cls 0.4501 bbox 0.4358)  2.77 it/s
+  iter 600/714  loss=0.8052  (cls 0.4575 bbox 0.3477)  2.77 it/s
+  iter 650/714  loss=0.8844  (cls 0.4487 bbox 0.4357)  2.77 it/s
+  iter 700/714  loss=0.9499  (cls 0.4839 bbox 0.4661)  2.77 it/s
+Epoch 15 train | total=0.8803 cls=0.4761 bbox=0.4042 | LR bb=2.97e-05 head=2.97e-04 | 714 batches in 257.9s
+Epoch 15 eval | mAP@50=0.180  mAP@[.5:.95]=0.079
+>> Best saved at epoch 15 (mAP@50: 0.180)
+  iter 0/714  loss=0.8329  (cls 0.3649 bbox 0.4680)  1.91 it/s
+  iter 50/714  loss=0.7983  (cls 0.4174 bbox 0.3809)  2.76 it/s
+  iter 100/714  loss=0.9532  (cls 0.4841 bbox 0.4691)  2.76 it/s
+  iter 150/714  loss=0.9610  (cls 0.5856 bbox 0.3754)  2.76 it/s
+  iter 200/714  loss=0.8740  (cls 0.5220 bbox 0.3520)  2.76 it/s
+  iter 250/714  loss=0.7172  (cls 0.4445 bbox 0.2727)  2.77 it/s
+  iter 300/714  loss=0.9495  (cls 0.5452 bbox 0.4043)  2.77 it/s
+  iter 350/714  loss=0.9573  (cls 0.5109 bbox 0.4464)  2.77 it/s
+  iter 400/714  loss=0.8695  (cls 0.4602 bbox 0.4093)  2.77 it/s
+  iter 450/714  loss=0.8779  (cls 0.4516 bbox 0.4262)  2.77 it/s
+  iter 500/714  loss=0.9355  (cls 0.4733 bbox 0.4623)  2.77 it/s
+  iter 550/714  loss=0.7660  (cls 0.4525 bbox 0.3135)  2.77 it/s
+  iter 600/714  loss=1.0547  (cls 0.5712 bbox 0.4834)  2.77 it/s
+  iter 650/714  loss=0.6198  (cls 0.3683 bbox 0.2515)  2.77 it/s
+  iter 700/714  loss=1.0881  (cls 0.6326 bbox 0.4555)  2.77 it/s
+Epoch 16 train | total=0.8583 cls=0.4633 bbox=0.3950 | LR bb=2.66e-05 head=2.66e-04 | 714 batches in 257.8s
+Epoch 16 eval | mAP@50=0.190  mAP@[.5:.95]=0.085
+>> Best saved at epoch 16 (mAP@50: 0.190)
+  iter 0/714  loss=0.6709  (cls 0.3911 bbox 0.2798)  1.88 it/s
+  iter 50/714  loss=1.0868  (cls 0.5208 bbox 0.5660)  2.76 it/s
+  iter 100/714  loss=0.8011  (cls 0.4199 bbox 0.3812)  2.77 it/s
+  iter 150/714  loss=0.9758  (cls 0.5244 bbox 0.4515)  2.77 it/s
+  iter 200/714  loss=1.0692  (cls 0.4623 bbox 0.6069)  2.77 it/s
+  iter 250/714  loss=0.7783  (cls 0.4567 bbox 0.3217)  2.77 it/s
+  iter 300/714  loss=0.7494  (cls 0.4277 bbox 0.3217)  2.77 it/s
+  iter 350/714  loss=1.0231  (cls 0.5176 bbox 0.5055)  2.77 it/s
+  iter 400/714  loss=0.8739  (cls 0.5411 bbox 0.3328)  2.77 it/s
+  iter 450/714  loss=0.6929  (cls 0.3971 bbox 0.2958)  2.77 it/s
+  iter 500/714  loss=0.8509  (cls 0.4957 bbox 0.3551)  2.77 it/s
+  iter 550/714  loss=0.9228  (cls 0.4669 bbox 0.4559)  2.77 it/s
+  iter 600/714  loss=0.9124  (cls 0.4836 bbox 0.4288)  2.77 it/s
+  iter 650/714  loss=0.7034  (cls 0.3859 bbox 0.3175)  2.77 it/s
+  iter 700/714  loss=0.6906  (cls 0.3676 bbox 0.3230)  2.77 it/s
+Epoch 17 train | total=0.8370 cls=0.4511 bbox=0.3860 | LR bb=2.34e-05 head=2.34e-04 | 714 batches in 257.8s
+Epoch 17 eval | mAP@50=0.202  mAP@[.5:.95]=0.091
+>> Best saved at epoch 17 (mAP@50: 0.202)
+  iter 0/714  loss=0.6679  (cls 0.3540 bbox 0.3139)  1.87 it/s
+  iter 50/714  loss=0.6220  (cls 0.2891 bbox 0.3329)  2.76 it/s
+  iter 100/714  loss=0.8016  (cls 0.4212 bbox 0.3804)  2.77 it/s
+  iter 150/714  loss=0.5985  (cls 0.3096 bbox 0.2889)  2.76 it/s
+  iter 200/714  loss=0.8535  (cls 0.4155 bbox 0.4379)  2.76 it/s
+  iter 250/714  loss=0.8010  (cls 0.4276 bbox 0.3733)  2.77 it/s
+  iter 300/714  loss=0.8567  (cls 0.4699 bbox 0.3868)  2.77 it/s
+  iter 350/714  loss=0.8369  (cls 0.5215 bbox 0.3154)  2.77 it/s
+  iter 400/714  loss=0.5309  (cls 0.2647 bbox 0.2662)  2.77 it/s
+  iter 450/714  loss=0.9179  (cls 0.5094 bbox 0.4085)  2.77 it/s
+  iter 500/714  loss=0.9734  (cls 0.5686 bbox 0.4048)  2.77 it/s
+  iter 550/714  loss=0.9522  (cls 0.5219 bbox 0.4304)  2.77 it/s
+  iter 600/714  loss=0.7452  (cls 0.4819 bbox 0.2633)  2.77 it/s
+  iter 650/714  loss=0.7808  (cls 0.4183 bbox 0.3625)  2.77 it/s
+  iter 700/714  loss=0.7233  (cls 0.4048 bbox 0.3185)  2.77 it/s
+Epoch 18 train | total=0.8073 cls=0.4312 bbox=0.3761 | LR bb=2.03e-05 head=2.03e-04 | 714 batches in 257.9s
+Epoch 18 eval | mAP@50=0.207  mAP@[.5:.95]=0.096
+>> Best saved at epoch 18 (mAP@50: 0.207)
+  iter 0/714  loss=0.9249  (cls 0.5084 bbox 0.4165)  1.81 it/s
+  iter 50/714  loss=0.7731  (cls 0.4488 bbox 0.3243)  2.76 it/s
+  iter 100/714  loss=0.8399  (cls 0.4872 bbox 0.3527)  2.77 it/s
+  iter 150/714  loss=0.8175  (cls 0.3547 bbox 0.4628)  2.77 it/s
+  iter 200/714  loss=0.6482  (cls 0.3200 bbox 0.3281)  2.77 it/s
+  iter 250/714  loss=0.5367  (cls 0.2856 bbox 0.2510)  2.77 it/s
+  iter 300/714  loss=0.8568  (cls 0.4945 bbox 0.3623)  2.77 it/s
+  iter 350/714  loss=0.9149  (cls 0.4199 bbox 0.4950)  2.77 it/s
+  iter 400/714  loss=0.7040  (cls 0.3564 bbox 0.3475)  2.77 it/s
+  iter 450/714  loss=0.8762  (cls 0.5086 bbox 0.3676)  2.77 it/s
+  iter 500/714  loss=0.9072  (cls 0.4754 bbox 0.4318)  2.77 it/s
+  iter 550/714  loss=0.7411  (cls 0.4479 bbox 0.2932)  2.77 it/s
+  iter 600/714  loss=0.6680  (cls 0.3804 bbox 0.2876)  2.77 it/s
+  iter 650/714  loss=0.8672  (cls 0.4458 bbox 0.4214)  2.77 it/s
+  iter 700/714  loss=0.8632  (cls 0.5033 bbox 0.3599)  2.77 it/s
+Epoch 19 train | total=0.7880 cls=0.4203 bbox=0.3677 | LR bb=1.73e-05 head=1.73e-04 | 714 batches in 257.9s
+Epoch 19 eval | mAP@50=0.206  mAP@[.5:.95]=0.094
+  iter 0/714  loss=0.6840  (cls 0.3354 bbox 0.3486)  1.79 it/s
+  iter 50/714  loss=0.5426  (cls 0.2802 bbox 0.2624)  2.76 it/s
+  iter 100/714  loss=0.4041  (cls 0.2341 bbox 0.1700)  2.77 it/s
+  iter 150/714  loss=0.6263  (cls 0.3867 bbox 0.2395)  2.77 it/s
+  iter 200/714  loss=0.9161  (cls 0.5615 bbox 0.3545)  2.77 it/s
+  iter 250/714  loss=0.6701  (cls 0.3654 bbox 0.3047)  2.77 it/s
+  iter 300/714  loss=0.6817  (cls 0.4103 bbox 0.2714)  2.77 it/s
+  iter 350/714  loss=0.6993  (cls 0.4152 bbox 0.2841)  2.77 it/s
+  iter 400/714  loss=0.7767  (cls 0.4061 bbox 0.3706)  2.77 it/s
+  iter 450/714  loss=0.8505  (cls 0.4746 bbox 0.3759)  2.77 it/s
+  iter 500/714  loss=0.7472  (cls 0.3599 bbox 0.3873)  2.77 it/s
+  iter 550/714  loss=0.6372  (cls 0.3169 bbox 0.3203)  2.77 it/s
+  iter 600/714  loss=0.8280  (cls 0.4247 bbox 0.4033)  2.77 it/s
+  iter 650/714  loss=0.8190  (cls 0.4414 bbox 0.3776)  2.77 it/s
+  iter 700/714  loss=0.7029  (cls 0.4011 bbox 0.3018)  2.77 it/s
+Epoch 20 train | total=0.7679 cls=0.4074 bbox=0.3604 | LR bb=1.44e-05 head=1.44e-04 | 714 batches in 258.2s
+Epoch 20 eval | mAP@50=0.208  mAP@[.5:.95]=0.096
+>> Best saved at epoch 20 (mAP@50: 0.208)
+  iter 0/714  loss=0.9218  (cls 0.4473 bbox 0.4745)  1.83 it/s
+  iter 50/714  loss=0.7622  (cls 0.3962 bbox 0.3660)  2.76 it/s
+  iter 100/714  loss=0.6018  (cls 0.3273 bbox 0.2744)  2.77 it/s
+  iter 150/714  loss=0.7500  (cls 0.3813 bbox 0.3687)  2.77 it/s
+  iter 200/714  loss=0.7101  (cls 0.3534 bbox 0.3567)  2.77 it/s
+  iter 250/714  loss=0.6879  (cls 0.3439 bbox 0.3440)  2.77 it/s
+  iter 300/714  loss=0.8321  (cls 0.4936 bbox 0.3385)  2.77 it/s
+  iter 350/714  loss=0.7509  (cls 0.4690 bbox 0.2819)  2.77 it/s
+  iter 400/714  loss=0.7036  (cls 0.3876 bbox 0.3160)  2.77 it/s
+  iter 450/714  loss=0.5441  (cls 0.2904 bbox 0.2536)  2.77 it/s
+  iter 500/714  loss=0.7674  (cls 0.3630 bbox 0.4044)  2.77 it/s
+  iter 550/714  loss=0.6906  (cls 0.3877 bbox 0.3028)  2.77 it/s
+  iter 600/714  loss=0.7182  (cls 0.4205 bbox 0.2977)  2.77 it/s
+  iter 650/714  loss=1.0536  (cls 0.5634 bbox 0.4902)  2.77 it/s
+  iter 700/714  loss=0.8616  (cls 0.4264 bbox 0.4352)  2.77 it/s
+Epoch 21 train | total=0.7432 cls=0.3905 bbox=0.3527 | LR bb=1.16e-05 head=1.16e-04 | 714 batches in 257.8s
+Epoch 21 eval | mAP@50=0.218  mAP@[.5:.95]=0.099
+>> Best saved at epoch 21 (mAP@50: 0.218)
+  iter 0/714  loss=0.7964  (cls 0.4955 bbox 0.3010)  2.01 it/s
+  iter 50/714  loss=0.6185  (cls 0.2857 bbox 0.3328)  2.77 it/s
+  iter 100/714  loss=0.7375  (cls 0.3334 bbox 0.4041)  2.77 it/s
+  iter 150/714  loss=0.9181  (cls 0.5429 bbox 0.3752)  2.78 it/s
+  iter 200/714  loss=0.8613  (cls 0.4406 bbox 0.4207)  2.78 it/s
+  iter 250/714  loss=0.7978  (cls 0.3978 bbox 0.4000)  2.78 it/s
+  iter 300/714  loss=0.8008  (cls 0.3497 bbox 0.4511)  2.78 it/s
+  iter 350/714  loss=0.7207  (cls 0.4229 bbox 0.2977)  2.78 it/s
+  iter 400/714  loss=0.8880  (cls 0.4186 bbox 0.4693)  2.78 it/s
+  iter 450/714  loss=0.7515  (cls 0.4018 bbox 0.3497)  2.78 it/s
+  iter 500/714  loss=0.7161  (cls 0.3129 bbox 0.4032)  2.77 it/s
+  iter 550/714  loss=0.7394  (cls 0.4021 bbox 0.3373)  2.77 it/s
+  iter 600/714  loss=0.6596  (cls 0.3568 bbox 0.3028)  2.77 it/s
+  iter 650/714  loss=0.6797  (cls 0.3442 bbox 0.3355)  2.77 it/s
+  iter 700/714  loss=0.7360  (cls 0.4570 bbox 0.2790)  2.77 it/s
+Epoch 22 train | total=0.7275 cls=0.3818 bbox=0.3458 | LR bb=9.06e-06 head=9.06e-05 | 714 batches in 257.5s
+Epoch 22 eval | mAP@50=0.220  mAP@[.5:.95]=0.102
+>> Best saved at epoch 22 (mAP@50: 0.220)
+  iter 0/714  loss=0.7876  (cls 0.4359 bbox 0.3517)  2.06 it/s
+  iter 50/714  loss=0.6023  (cls 0.2967 bbox 0.3055)  2.78 it/s
+  iter 100/714  loss=0.7483  (cls 0.3862 bbox 0.3622)  2.78 it/s
+  iter 150/714  loss=0.8947  (cls 0.5289 bbox 0.3658)  2.78 it/s
+  iter 200/714  loss=0.5951  (cls 0.3053 bbox 0.2898)  2.78 it/s
+  iter 250/714  loss=0.9185  (cls 0.4543 bbox 0.4642)  2.77 it/s
+  iter 300/714  loss=0.5348  (cls 0.2284 bbox 0.3064)  2.77 it/s
+  iter 350/714  loss=0.5604  (cls 0.2637 bbox 0.2967)  2.77 it/s
+  iter 400/714  loss=0.7720  (cls 0.4075 bbox 0.3645)  2.77 it/s
+  iter 450/714  loss=0.7620  (cls 0.4209 bbox 0.3411)  2.77 it/s
+  iter 500/714  loss=0.7127  (cls 0.3688 bbox 0.3439)  2.77 it/s
+  iter 550/714  loss=0.6722  (cls 0.3648 bbox 0.3073)  2.77 it/s
+  iter 600/714  loss=0.8165  (cls 0.4041 bbox 0.4125)  2.77 it/s
+  iter 650/714  loss=0.4757  (cls 0.2776 bbox 0.1981)  2.77 it/s
+  iter 700/714  loss=0.5710  (cls 0.2710 bbox 0.3000)  2.77 it/s
+Epoch 23 train | total=0.7058 cls=0.3667 bbox=0.3391 | LR bb=6.78e-06 head=6.78e-05 | 714 batches in 257.7s
+Epoch 23 eval | mAP@50=0.223  mAP@[.5:.95]=0.104
+>> Best saved at epoch 23 (mAP@50: 0.223)
+  iter 0/714  loss=0.5363  (cls 0.2869 bbox 0.2494)  1.89 it/s
+  iter 50/714  loss=0.8791  (cls 0.4497 bbox 0.4294)  2.76 it/s
+  iter 100/714  loss=0.9139  (cls 0.4913 bbox 0.4226)  2.77 it/s
+  iter 150/714  loss=0.9268  (cls 0.5453 bbox 0.3815)  2.77 it/s
+  iter 200/714  loss=0.7283  (cls 0.3813 bbox 0.3469)  2.77 it/s
+  iter 250/714  loss=0.6914  (cls 0.3723 bbox 0.3191)  2.77 it/s
+  iter 300/714  loss=0.5782  (cls 0.2623 bbox 0.3160)  2.76 it/s
+  iter 350/714  loss=0.6319  (cls 0.3260 bbox 0.3059)  2.76 it/s
+  iter 400/714  loss=0.8862  (cls 0.4696 bbox 0.4165)  2.77 it/s
+  iter 450/714  loss=0.7883  (cls 0.4501 bbox 0.3382)  2.77 it/s
+  iter 500/714  loss=0.4787  (cls 0.2381 bbox 0.2407)  2.77 it/s
+  iter 550/714  loss=0.7018  (cls 0.3314 bbox 0.3704)  2.77 it/s
+  iter 600/714  loss=0.6416  (cls 0.3464 bbox 0.2951)  2.77 it/s
+  iter 650/714  loss=0.6726  (cls 0.3120 bbox 0.3606)  2.77 it/s
+  iter 700/714  loss=0.9721  (cls 0.5571 bbox 0.4150)  2.77 it/s
+Epoch 24 train | total=0.6915 cls=0.3588 bbox=0.3327 | LR bb=4.77e-06 head=4.77e-05 | 714 batches in 258.1s
+Epoch 24 eval | mAP@50=0.228  mAP@[.5:.95]=0.107
+>> Best saved at epoch 24 (mAP@50: 0.228)
+  iter 0/714  loss=0.9190  (cls 0.4967 bbox 0.4223)  1.83 it/s
+  iter 50/714  loss=0.6177  (cls 0.3600 bbox 0.2577)  2.76 it/s
+  iter 100/714  loss=0.6275  (cls 0.3012 bbox 0.3263)  2.77 it/s
+  iter 150/714  loss=0.7153  (cls 0.4303 bbox 0.2850)  2.76 it/s
+  iter 200/714  loss=0.5923  (cls 0.2666 bbox 0.3257)  2.77 it/s
+  iter 250/714  loss=0.5324  (cls 0.2855 bbox 0.2469)  2.77 it/s
+  iter 300/714  loss=0.6135  (cls 0.3285 bbox 0.2850)  2.76 it/s
+  iter 350/714  loss=0.7069  (cls 0.3670 bbox 0.3399)  2.76 it/s
+  iter 400/714  loss=0.7311  (cls 0.3830 bbox 0.3482)  2.76 it/s
+  iter 450/714  loss=1.0254  (cls 0.4961 bbox 0.5293)  2.76 it/s
+  iter 500/714  loss=0.5907  (cls 0.3059 bbox 0.2848)  2.76 it/s
+  iter 550/714  loss=0.7976  (cls 0.4166 bbox 0.3809)  2.76 it/s
+  iter 600/714  loss=0.4914  (cls 0.2722 bbox 0.2191)  2.76 it/s
+  iter 650/714  loss=0.7501  (cls 0.4042 bbox 0.3459)  2.76 it/s
+  iter 700/714  loss=0.6704  (cls 0.3235 bbox 0.3469)  2.76 it/s
+Epoch 25 train | total=0.6745 cls=0.3476 bbox=0.3270 | LR bb=3.09e-06 head=3.09e-05 | 714 batches in 258.3s
+Epoch 25 eval | mAP@50=0.227  mAP@[.5:.95]=0.106
+  iter 0/714  loss=0.7064  (cls 0.3732 bbox 0.3332)  1.83 it/s
+  iter 50/714  loss=0.6472  (cls 0.3786 bbox 0.2686)  2.75 it/s
+  iter 100/714  loss=0.7305  (cls 0.3799 bbox 0.3506)  2.76 it/s
+  iter 150/714  loss=0.6500  (cls 0.3424 bbox 0.3076)  2.76 it/s
+  iter 200/714  loss=0.7762  (cls 0.3876 bbox 0.3886)  2.76 it/s
+  iter 250/714  loss=0.7348  (cls 0.4032 bbox 0.3316)  2.76 it/s
+  iter 300/714  loss=0.5657  (cls 0.2779 bbox 0.2878)  2.76 it/s
+  iter 350/714  loss=0.6472  (cls 0.3048 bbox 0.3423)  2.76 it/s
+  iter 400/714  loss=0.6560  (cls 0.3338 bbox 0.3222)  2.76 it/s
+  iter 450/714  loss=0.5600  (cls 0.2808 bbox 0.2793)  2.76 it/s
+  iter 500/714  loss=0.7354  (cls 0.3365 bbox 0.3989)  2.76 it/s
+  iter 550/714  loss=0.7951  (cls 0.3555 bbox 0.4396)  2.76 it/s
+  iter 600/714  loss=0.6553  (cls 0.3549 bbox 0.3004)  2.76 it/s
+  iter 650/714  loss=0.8629  (cls 0.5338 bbox 0.3291)  2.77 it/s
+  iter 700/714  loss=0.4024  (cls 0.2312 bbox 0.1712)  2.77 it/s
+Epoch 26 train | total=0.6624 cls=0.3399 bbox=0.3225 | LR bb=1.76e-06 head=1.76e-05 | 714 batches in 258.2s
+Epoch 26 eval | mAP@50=0.232  mAP@[.5:.95]=0.108
+>> Best saved at epoch 26 (mAP@50: 0.232)
+  iter 0/714  loss=0.5413  (cls 0.2747 bbox 0.2666)  1.94 it/s
+  iter 50/714  loss=0.7834  (cls 0.3957 bbox 0.3878)  2.77 it/s
+  iter 100/714  loss=0.6182  (cls 0.3014 bbox 0.3168)  2.77 it/s
+  iter 150/714  loss=0.5557  (cls 0.2915 bbox 0.2642)  2.77 it/s
+  iter 200/714  loss=0.4950  (cls 0.2171 bbox 0.2778)  2.77 it/s
+  iter 250/714  loss=0.5096  (cls 0.2565 bbox 0.2530)  2.77 it/s
+  iter 300/714  loss=0.6654  (cls 0.3705 bbox 0.2950)  2.77 it/s
+  iter 350/714  loss=0.7450  (cls 0.4160 bbox 0.3290)  2.77 it/s
+  iter 400/714  loss=0.5678  (cls 0.2672 bbox 0.3006)  2.77 it/s
+  iter 450/714  loss=0.6171  (cls 0.2977 bbox 0.3194)  2.77 it/s
+  iter 500/714  loss=0.7989  (cls 0.4305 bbox 0.3684)  2.77 it/s
+  iter 550/714  loss=0.5826  (cls 0.3385 bbox 0.2441)  2.77 it/s
+  iter 600/714  loss=0.5914  (cls 0.2895 bbox 0.3019)  2.77 it/s
+  iter 650/714  loss=0.7040  (cls 0.3645 bbox 0.3395)  2.77 it/s
+  iter 700/714  loss=0.4852  (cls 0.2285 bbox 0.2567)  2.77 it/s
+Epoch 27 train | total=0.6551 cls=0.3356 bbox=0.3195 | LR bb=7.85e-07 head=7.85e-06 | 714 batches in 258.1s
+Epoch 27 eval | mAP@50=0.232  mAP@[.5:.95]=0.107
+  iter 0/714  loss=0.5872  (cls 0.3211 bbox 0.2661)  1.83 it/s
+  iter 50/714  loss=0.5433  (cls 0.3144 bbox 0.2289)  2.77 it/s
+  iter 100/714  loss=0.6772  (cls 0.3864 bbox 0.2908)  2.77 it/s
+  iter 150/714  loss=0.7898  (cls 0.4298 bbox 0.3600)  2.77 it/s
+  iter 200/714  loss=0.5502  (cls 0.2745 bbox 0.2757)  2.77 it/s
+  iter 250/714  loss=0.4672  (cls 0.1979 bbox 0.2694)  2.77 it/s
+  iter 300/714  loss=0.6392  (cls 0.3270 bbox 0.3122)  2.77 it/s
+  iter 350/714  loss=0.6263  (cls 0.2869 bbox 0.3394)  2.77 it/s
+  iter 400/714  loss=0.5585  (cls 0.2645 bbox 0.2940)  2.77 it/s
+  iter 450/714  loss=0.5901  (cls 0.3495 bbox 0.2406)  2.77 it/s
+  iter 500/714  loss=0.6674  (cls 0.3335 bbox 0.3338)  2.77 it/s
+  iter 550/714  loss=0.8067  (cls 0.4732 bbox 0.3335)  2.77 it/s
+  iter 600/714  loss=0.6907  (cls 0.3906 bbox 0.3000)  2.77 it/s
+  iter 650/714  loss=0.5071  (cls 0.2666 bbox 0.2405)  2.77 it/s
+  iter 700/714  loss=0.7884  (cls 0.3483 bbox 0.4401)  2.77 it/s
+Epoch 28 train | total=0.6485 cls=0.3315 bbox=0.3170 | LR bb=1.97e-07 head=1.97e-06 | 714 batches in 258.0s
+Epoch 28 eval | mAP@50=0.231  mAP@[.5:.95]=0.108
+  iter 0/714  loss=0.4571  (cls 0.2204 bbox 0.2368)  1.83 it/s
+  iter 50/714  loss=0.6924  (cls 0.3391 bbox 0.3533)  2.76 it/s
+  iter 100/714  loss=0.6679  (cls 0.3192 bbox 0.3487)  2.76 it/s
+  iter 150/714  loss=0.4677  (cls 0.2345 bbox 0.2332)  2.77 it/s
+  iter 200/714  loss=0.7612  (cls 0.4067 bbox 0.3545)  2.76 it/s
+  iter 250/714  loss=0.7562  (cls 0.3901 bbox 0.3661)  2.76 it/s
+  iter 300/714  loss=0.7284  (cls 0.3715 bbox 0.3569)  2.76 it/s
+  iter 350/714  loss=0.6593  (cls 0.3312 bbox 0.3282)  2.76 it/s
+  iter 400/714  loss=0.7118  (cls 0.3179 bbox 0.3938)  2.76 it/s
+  iter 450/714  loss=0.8013  (cls 0.3958 bbox 0.4055)  2.76 it/s
+  iter 500/714  loss=0.6858  (cls 0.3431 bbox 0.3428)  2.76 it/s
+  iter 550/714  loss=0.4813  (cls 0.2598 bbox 0.2215)  2.76 it/s
+  iter 600/714  loss=0.6208  (cls 0.3059 bbox 0.3149)  2.76 it/s
+  iter 650/714  loss=0.6557  (cls 0.2916 bbox 0.3642)  2.76 it/s
+  iter 700/714  loss=0.5639  (cls 0.2642 bbox 0.2997)  2.76 it/s
+Epoch 29 train | total=0.6470 cls=0.3303 bbox=0.3167 | LR bb=0.00e+00 head=0.00e+00 | 714 batches in 258.3s
+Epoch 29 eval | mAP@50=0.231  mAP@[.5:.95]=0.108
+Training complete.

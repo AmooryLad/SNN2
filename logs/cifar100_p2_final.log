@@ -1,0 +1,308 @@
+=== Experiment final: Phase 2 final: best config, long train ===
+Log: /workspace/SNN/logs/cifar100_p2_final.log
+num_steps=8 batch_size=128 epochs=200
+attention: channel=True spatial=True temporal=True
+/workspace/SNN/venv/lib/python3.12/site-packages/torchvision/datasets/cifar.py:83: VisibleDeprecationWarning: dtype(): align should be passed as Python or NumPy boolean but got `align=0`. Did you mean to pass a tuple to create a subarray type? (Deprecated NumPy 2.4)
+  entry = pickle.load(f, encoding="latin1")
+Training set size: 50000
+Test set size: 10000
+Train augmentation: RandomCrop(32, pad=4) + HorizontalFlip
+Training on 100 classes
+Experiment: cifar100_p2_final | Seed: 42
+Trainable params: 1,459,210
+No checkpoint found, starting fresh.
+Epoch 0 | Acc: 19.53% | CE: 3.915 | SpikeReg: 0.178 | LR: 1.00e-03
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.024 0.051 0.050 0.026 0.012
+>> Best saved at epoch 0 (accuracy: 19.53%)
+Epoch 1 | Acc: 31.11% | CE: 3.369 | SpikeReg: 0.169 | LR: 1.00e-03
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.020 0.046 0.044 0.025 0.041
+>> Best saved at epoch 1 (accuracy: 31.11%)
+Epoch 2 | Acc: 36.73% | CE: 3.034 | SpikeReg: 0.191 | LR: 9.99e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.017 0.038 0.035 0.017 0.091
+>> Best saved at epoch 2 (accuracy: 36.73%)
+Epoch 3 | Acc: 41.23% | CE: 2.852 | SpikeReg: 0.194 | LR: 9.99e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.016 0.037 0.031 0.015 0.083
+>> Best saved at epoch 3 (accuracy: 41.23%)
+Epoch 4 | Acc: 43.00% | CE: 2.728 | SpikeReg: 0.182 | LR: 9.98e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.014 0.037 0.025 0.013 0.091
+>> Best saved at epoch 4 (accuracy: 43.00%)
+Epoch 5 | Acc: 44.99% | CE: 2.641 | SpikeReg: 0.173 | LR: 9.98e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.013 0.036 0.022 0.012 0.076
+>> Best saved at epoch 5 (accuracy: 44.99%)
+Epoch 6 | Acc: 46.72% | CE: 2.563 | SpikeReg: 0.166 | LR: 9.97e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.013 0.034 0.018 0.012 0.078
+>> Best saved at epoch 6 (accuracy: 46.72%)
+Epoch 7 | Acc: 48.61% | CE: 2.494 | SpikeReg: 0.163 | LR: 9.96e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.011 0.032 0.015 0.011 0.087
+>> Best saved at epoch 7 (accuracy: 48.61%)
+Epoch 8 | Acc: 49.46% | CE: 2.436 | SpikeReg: 0.161 | LR: 9.95e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.011 0.030 0.013 0.011 0.085
+>> Best saved at epoch 8 (accuracy: 49.46%)
+Epoch 9 | Acc: 49.55% | CE: 2.394 | SpikeReg: 0.162 | LR: 9.94e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.010 0.030 0.010 0.010 0.101
+>> Best saved at epoch 9 (accuracy: 49.55%)
+Epoch 10 | Acc: 51.08% | CE: 2.355 | SpikeReg: 0.158 | LR: 9.93e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.009 0.029 0.008 0.011 0.101
+>> Best saved at epoch 10 (accuracy: 51.08%)
+Epoch 11 | Acc: 51.44% | CE: 2.318 | SpikeReg: 0.161 | LR: 9.91e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.010 0.030 0.008 0.011 0.088
+>> Best saved at epoch 11 (accuracy: 51.44%)
+Epoch 12 | Acc: 50.88% | CE: 2.281 | SpikeReg: 0.166 | LR: 9.90e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.008 0.026 0.006 0.010 0.117
+Epoch 13 | Acc: 51.94% | CE: 2.259 | SpikeReg: 0.165 | LR: 9.88e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.009 0.026 0.006 0.010 0.103
+>> Best saved at epoch 13 (accuracy: 51.94%)
+Epoch 14 | Acc: 53.13% | CE: 2.225 | SpikeReg: 0.169 | LR: 9.86e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.008 0.028 0.005 0.010 0.115
+>> Best saved at epoch 14 (accuracy: 53.13%)
+Epoch 15 | Acc: 53.70% | CE: 2.192 | SpikeReg: 0.174 | LR: 9.84e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.008 0.027 0.004 0.010 0.116
+>> Best saved at epoch 15 (accuracy: 53.70%)
+Epoch 16 | Acc: 53.20% | CE: 2.175 | SpikeReg: 0.171 | LR: 9.82e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.008 0.026 0.004 0.011 0.108
+Epoch 17 | Acc: 53.24% | CE: 2.161 | SpikeReg: 0.170 | LR: 9.80e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.008 0.024 0.004 0.010 0.115
+Epoch 18 | Acc: 54.52% | CE: 2.136 | SpikeReg: 0.176 | LR: 9.78e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.023 0.003 0.010 0.128
+>> Best saved at epoch 18 (accuracy: 54.52%)
+Epoch 19 | Acc: 54.15% | CE: 2.123 | SpikeReg: 0.179 | LR: 9.76e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.024 0.003 0.010 0.115
+Epoch 20 | Acc: 54.65% | CE: 2.094 | SpikeReg: 0.175 | LR: 9.73e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.006 0.023 0.003 0.010 0.128
+>> Best saved at epoch 20 (accuracy: 54.65%)
+Epoch 21 | Acc: 54.17% | CE: 2.080 | SpikeReg: 0.180 | LR: 9.70e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.022 0.003 0.010 0.123
+Epoch 22 | Acc: 55.17% | CE: 2.056 | SpikeReg: 0.181 | LR: 9.68e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.021 0.002 0.010 0.140
+>> Best saved at epoch 22 (accuracy: 55.17%)
+Epoch 23 | Acc: 55.51% | CE: 2.046 | SpikeReg: 0.183 | LR: 9.65e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.022 0.002 0.010 0.127
+>> Best saved at epoch 23 (accuracy: 55.51%)
+Epoch 24 | Acc: 55.47% | CE: 2.028 | SpikeReg: 0.177 | LR: 9.62e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.021 0.002 0.010 0.147
+Epoch 25 | Acc: 55.50% | CE: 2.016 | SpikeReg: 0.184 | LR: 9.59e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.006 0.020 0.002 0.010 0.134
+Epoch 26 | Acc: 55.54% | CE: 2.009 | SpikeReg: 0.184 | LR: 9.56e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.018 0.002 0.010 0.138
+>> Best saved at epoch 26 (accuracy: 55.54%)
+Epoch 27 | Acc: 55.82% | CE: 1.994 | SpikeReg: 0.189 | LR: 9.52e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.020 0.002 0.010 0.140
+>> Best saved at epoch 27 (accuracy: 55.82%)
+Epoch 28 | Acc: 56.02% | CE: 1.970 | SpikeReg: 0.185 | LR: 9.49e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.019 0.002 0.010 0.142
+>> Best saved at epoch 28 (accuracy: 56.02%)
+Epoch 29 | Acc: 56.56% | CE: 1.966 | SpikeReg: 0.187 | LR: 9.46e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.006 0.019 0.002 0.010 0.140
+>> Best saved at epoch 29 (accuracy: 56.56%)
+Epoch 30 | Acc: 56.35% | CE: 1.948 | SpikeReg: 0.187 | LR: 9.42e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.007 0.018 0.002 0.010 0.141
+Epoch 31 | Acc: 56.35% | CE: 1.935 | SpikeReg: 0.192 | LR: 9.38e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.006 0.018 0.002 0.010 0.151
+Epoch 32 | Acc: 56.35% | CE: 1.926 | SpikeReg: 0.193 | LR: 9.34e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.006 0.018 0.001 0.009 0.160
+Epoch 33 | Acc: 56.19% | CE: 1.916 | SpikeReg: 0.196 | LR: 9.30e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.006 0.018 0.001 0.010 0.166
+Epoch 34 | Acc: 56.79% | CE: 1.913 | SpikeReg: 0.199 | LR: 9.26e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.006 0.019 0.001 0.010 0.157
+>> Best saved at epoch 34 (accuracy: 56.79%)
+Epoch 35 | Acc: 55.72% | CE: 1.893 | SpikeReg: 0.202 | LR: 9.22e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.018 0.001 0.010 0.148
+Epoch 36 | Acc: 55.23% | CE: 1.886 | SpikeReg: 0.208 | LR: 9.18e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.006 0.019 0.001 0.009 0.159
+Epoch 37 | Acc: 57.50% | CE: 1.883 | SpikeReg: 0.209 | LR: 9.14e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.019 0.001 0.009 0.173
+>> Best saved at epoch 37 (accuracy: 57.50%)
+Epoch 38 | Acc: 55.16% | CE: 1.875 | SpikeReg: 0.214 | LR: 9.09e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.019 0.001 0.009 0.174
+Epoch 39 | Acc: 55.97% | CE: 1.873 | SpikeReg: 0.218 | LR: 9.05e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.018 0.001 0.009 0.179
+Epoch 40 | Acc: 56.55% | CE: 1.855 | SpikeReg: 0.216 | LR: 9.00e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.018 0.001 0.009 0.196
+Epoch 41 | Acc: 56.05% | CE: 1.844 | SpikeReg: 0.218 | LR: 8.95e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.018 0.001 0.009 0.180
+Epoch 42 | Acc: 56.18% | CE: 1.834 | SpikeReg: 0.217 | LR: 8.90e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.018 0.001 0.009 0.163
+Epoch 43 | Acc: 56.77% | CE: 1.825 | SpikeReg: 0.217 | LR: 8.85e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.017 0.001 0.009 0.183
+Epoch 44 | Acc: 57.21% | CE: 1.811 | SpikeReg: 0.226 | LR: 8.80e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.016 0.001 0.009 0.187
+Epoch 45 | Acc: 57.25% | CE: 1.808 | SpikeReg: 0.222 | LR: 8.75e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.017 0.001 0.009 0.170
+Epoch 46 | Acc: 56.90% | CE: 1.801 | SpikeReg: 0.225 | LR: 8.70e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.016 0.001 0.009 0.192
+Epoch 47 | Acc: 56.87% | CE: 1.796 | SpikeReg: 0.230 | LR: 8.64e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.016 0.001 0.009 0.185
+Epoch 48 | Acc: 57.08% | CE: 1.792 | SpikeReg: 0.230 | LR: 8.59e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.016 0.001 0.009 0.195
+Epoch 49 | Acc: 56.11% | CE: 1.780 | SpikeReg: 0.241 | LR: 8.54e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.015 0.001 0.009 0.202
+Epoch 50 | Acc: 57.40% | CE: 1.771 | SpikeReg: 0.237 | LR: 8.48e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.016 0.001 0.009 0.187
+Epoch 51 | Acc: 56.97% | CE: 1.775 | SpikeReg: 0.236 | LR: 8.42e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.016 0.001 0.008 0.204
+Epoch 52 | Acc: 56.31% | CE: 1.763 | SpikeReg: 0.244 | LR: 8.37e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.015 0.001 0.009 0.188
+Epoch 53 | Acc: 56.80% | CE: 1.758 | SpikeReg: 0.246 | LR: 8.31e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.016 0.000 0.008 0.203
+Epoch 54 | Acc: 56.39% | CE: 1.754 | SpikeReg: 0.250 | LR: 8.25e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.016 0.000 0.008 0.208
+Epoch 55 | Acc: 56.58% | CE: 1.746 | SpikeReg: 0.254 | LR: 8.19e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.016 0.000 0.008 0.215
+Epoch 56 | Acc: 56.30% | CE: 1.734 | SpikeReg: 0.258 | LR: 8.13e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.017 0.000 0.008 0.198
+Epoch 57 | Acc: 56.46% | CE: 1.726 | SpikeReg: 0.253 | LR: 8.06e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.017 0.000 0.008 0.213
+Epoch 58 | Acc: 57.25% | CE: 1.729 | SpikeReg: 0.253 | LR: 8.00e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.008 0.230
+Epoch 59 | Acc: 56.92% | CE: 1.717 | SpikeReg: 0.258 | LR: 7.94e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.015 0.000 0.008 0.198
+Epoch 60 | Acc: 56.00% | CE: 1.716 | SpikeReg: 0.259 | LR: 7.88e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.008 0.223
+Epoch 61 | Acc: 57.08% | CE: 1.710 | SpikeReg: 0.258 | LR: 7.81e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.015 0.000 0.008 0.213
+Epoch 62 | Acc: 57.25% | CE: 1.698 | SpikeReg: 0.257 | LR: 7.75e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.015 0.000 0.008 0.206
+Epoch 63 | Acc: 56.72% | CE: 1.690 | SpikeReg: 0.267 | LR: 7.68e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.008 0.210
+Epoch 64 | Acc: 56.17% | CE: 1.691 | SpikeReg: 0.269 | LR: 7.61e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.008 0.220
+Epoch 65 | Acc: 56.72% | CE: 1.695 | SpikeReg: 0.274 | LR: 7.55e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.008 0.202
+Epoch 66 | Acc: 56.86% | CE: 1.683 | SpikeReg: 0.277 | LR: 7.48e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.008 0.209
+Epoch 67 | Acc: 56.70% | CE: 1.668 | SpikeReg: 0.280 | LR: 7.41e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.005 0.013 0.000 0.008 0.221
+Epoch 68 | Acc: 56.60% | CE: 1.670 | SpikeReg: 0.288 | LR: 7.34e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.008 0.234
+Epoch 69 | Acc: 57.22% | CE: 1.663 | SpikeReg: 0.298 | LR: 7.27e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.008 0.240
+Epoch 70 | Acc: 56.46% | CE: 1.663 | SpikeReg: 0.310 | LR: 7.20e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.008 0.232
+Epoch 71 | Acc: 56.07% | CE: 1.660 | SpikeReg: 0.311 | LR: 7.13e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.008 0.242
+Epoch 72 | Acc: 56.13% | CE: 1.647 | SpikeReg: 0.310 | LR: 7.06e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.008 0.238
+Epoch 73 | Acc: 56.14% | CE: 1.646 | SpikeReg: 0.314 | LR: 6.99e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.008 0.260
+Epoch 74 | Acc: 56.97% | CE: 1.643 | SpikeReg: 0.316 | LR: 6.91e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.015 0.000 0.007 0.256
+Epoch 75 | Acc: 57.02% | CE: 1.641 | SpikeReg: 0.311 | LR: 6.84e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.007 0.264
+Epoch 76 | Acc: 57.82% | CE: 1.641 | SpikeReg: 0.310 | LR: 6.77e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.007 0.266
+>> Best saved at epoch 76 (accuracy: 57.82%)
+Epoch 77 | Acc: 56.35% | CE: 1.629 | SpikeReg: 0.315 | LR: 6.69e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.008 0.261
+Epoch 78 | Acc: 56.73% | CE: 1.623 | SpikeReg: 0.314 | LR: 6.62e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.008 0.255
+Epoch 79 | Acc: 56.90% | CE: 1.621 | SpikeReg: 0.313 | LR: 6.55e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.008 0.260
+Epoch 80 | Acc: 57.44% | CE: 1.607 | SpikeReg: 0.318 | LR: 6.47e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.007 0.266
+Epoch 81 | Acc: 57.08% | CE: 1.603 | SpikeReg: 0.314 | LR: 6.39e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.007 0.254
+Epoch 82 | Acc: 56.19% | CE: 1.603 | SpikeReg: 0.317 | LR: 6.32e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.014 0.000 0.007 0.250
+Epoch 83 | Acc: 56.54% | CE: 1.594 | SpikeReg: 0.316 | LR: 6.24e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.007 0.268
+Epoch 84 | Acc: 57.48% | CE: 1.586 | SpikeReg: 0.319 | LR: 6.17e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.007 0.263
+Epoch 85 | Acc: 56.73% | CE: 1.588 | SpikeReg: 0.316 | LR: 6.09e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.007 0.267
+Epoch 86 | Acc: 57.32% | CE: 1.582 | SpikeReg: 0.320 | LR: 6.01e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.007 0.257
+Epoch 87 | Acc: 57.14% | CE: 1.568 | SpikeReg: 0.320 | LR: 5.94e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.007 0.255
+Epoch 88 | Acc: 56.53% | CE: 1.573 | SpikeReg: 0.313 | LR: 5.86e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.013 0.000 0.007 0.257
+Epoch 89 | Acc: 57.29% | CE: 1.578 | SpikeReg: 0.310 | LR: 5.78e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.260
+Epoch 90 | Acc: 57.22% | CE: 1.576 | SpikeReg: 0.312 | LR: 5.70e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.252
+Epoch 91 | Acc: 57.59% | CE: 1.562 | SpikeReg: 0.322 | LR: 5.63e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.271
+Epoch 92 | Acc: 57.06% | CE: 1.561 | SpikeReg: 0.324 | LR: 5.55e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.258
+Epoch 93 | Acc: 57.22% | CE: 1.550 | SpikeReg: 0.326 | LR: 5.47e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.276
+Epoch 94 | Acc: 57.51% | CE: 1.549 | SpikeReg: 0.332 | LR: 5.39e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.272
+Epoch 95 | Acc: 57.25% | CE: 1.549 | SpikeReg: 0.340 | LR: 5.31e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.294
+Epoch 96 | Acc: 58.10% | CE: 1.543 | SpikeReg: 0.342 | LR: 5.24e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.011 0.000 0.007 0.285
+>> Best saved at epoch 96 (accuracy: 58.10%)
+Epoch 97 | Acc: 57.70% | CE: 1.535 | SpikeReg: 0.345 | LR: 5.16e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.298
+Epoch 98 | Acc: 56.84% | CE: 1.533 | SpikeReg: 0.344 | LR: 5.08e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.011 0.000 0.007 0.292
+Epoch 99 | Acc: 57.68% | CE: 1.518 | SpikeReg: 0.342 | LR: 5.00e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.297
+Epoch 100 | Acc: 57.54% | CE: 1.518 | SpikeReg: 0.344 | LR: 4.92e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.310
+Epoch 101 | Acc: 57.52% | CE: 1.519 | SpikeReg: 0.348 | LR: 4.84e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.292
+Epoch 102 | Acc: 57.68% | CE: 1.516 | SpikeReg: 0.341 | LR: 4.76e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.012 0.000 0.007 0.284
+Epoch 103 | Acc: 57.55% | CE: 1.511 | SpikeReg: 0.336 | LR: 4.69e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.290
+Epoch 104 | Acc: 57.66% | CE: 1.513 | SpikeReg: 0.339 | LR: 4.61e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.286
+Epoch 105 | Acc: 57.72% | CE: 1.505 | SpikeReg: 0.349 | LR: 4.53e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.293
+Epoch 106 | Acc: 57.60% | CE: 1.505 | SpikeReg: 0.346 | LR: 4.45e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.006 0.307
+Epoch 107 | Acc: 57.27% | CE: 1.493 | SpikeReg: 0.345 | LR: 4.37e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.006 0.310
+Epoch 108 | Acc: 57.76% | CE: 1.485 | SpikeReg: 0.352 | LR: 4.30e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.304
+Epoch 109 | Acc: 57.71% | CE: 1.483 | SpikeReg: 0.357 | LR: 4.22e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.006 0.314
+Epoch 110 | Acc: 58.44% | CE: 1.482 | SpikeReg: 0.353 | LR: 4.14e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.012 0.000 0.007 0.299
+>> Best saved at epoch 110 (accuracy: 58.44%)
+Epoch 111 | Acc: 57.77% | CE: 1.487 | SpikeReg: 0.352 | LR: 4.06e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.007 0.312
+Epoch 112 | Acc: 58.35% | CE: 1.476 | SpikeReg: 0.350 | LR: 3.99e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.012 0.000 0.007 0.311
+Epoch 113 | Acc: 57.76% | CE: 1.477 | SpikeReg: 0.353 | LR: 3.91e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.007 0.316
+Epoch 114 | Acc: 58.02% | CE: 1.477 | SpikeReg: 0.358 | LR: 3.83e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.319
+Epoch 115 | Acc: 58.60% | CE: 1.477 | SpikeReg: 0.357 | LR: 3.76e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.012 0.000 0.006 0.320
+>> Best saved at epoch 115 (accuracy: 58.60%)
+Epoch 116 | Acc: 58.24% | CE: 1.460 | SpikeReg: 0.364 | LR: 3.68e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.004 0.011 0.000 0.006 0.322
+Epoch 117 | Acc: 57.74% | CE: 1.456 | SpikeReg: 0.364 | LR: 3.61e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.325
+Epoch 118 | Acc: 58.25% | CE: 1.460 | SpikeReg: 0.366 | LR: 3.53e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.340
+Epoch 119 | Acc: 57.98% | CE: 1.454 | SpikeReg: 0.367 | LR: 3.45e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.337
+Epoch 120 | Acc: 58.28% | CE: 1.454 | SpikeReg: 0.369 | LR: 3.38e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.336
+Epoch 121 | Acc: 58.49% | CE: 1.455 | SpikeReg: 0.372 | LR: 3.31e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.334
+Epoch 122 | Acc: 58.06% | CE: 1.450 | SpikeReg: 0.370 | LR: 3.23e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.012 0.000 0.006 0.330
+Epoch 123 | Acc: 58.28% | CE: 1.446 | SpikeReg: 0.371 | LR: 3.16e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.328
+Epoch 124 | Acc: 58.58% | CE: 1.441 | SpikeReg: 0.374 | LR: 3.09e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.338
+Epoch 125 | Acc: 59.05% | CE: 1.440 | SpikeReg: 0.378 | LR: 3.01e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.335
+>> Best saved at epoch 125 (accuracy: 59.05%)
+Epoch 126 | Acc: 58.57% | CE: 1.436 | SpikeReg: 0.376 | LR: 2.94e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.341
+Epoch 127 | Acc: 58.57% | CE: 1.433 | SpikeReg: 0.382 | LR: 2.87e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.346
+Epoch 128 | Acc: 58.45% | CE: 1.430 | SpikeReg: 0.387 | LR: 2.80e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.361
+Epoch 129 | Acc: 59.08% | CE: 1.421 | SpikeReg: 0.386 | LR: 2.73e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.345
+>> Best saved at epoch 129 (accuracy: 59.08%)
+Epoch 130 | Acc: 58.80% | CE: 1.423 | SpikeReg: 0.388 | LR: 2.66e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.367
+Epoch 131 | Acc: 58.82% | CE: 1.423 | SpikeReg: 0.388 | LR: 2.59e-04
+  Fire rates (lif1/lif2/lif3/lif4/out): 0.003 0.011 0.000 0.006 0.351

@@ -51,6 +51,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from cifar100_spikedetect.data import VOC_CLASSES
 from cifar100_spikedetect.model import build_retinanet
+from cifar100_spikedetect.yolov8_detector import build_yolov8_detector
 
 
 # --- CLI ----------------------------------------------------------------
@@ -90,15 +91,27 @@ classes = ckpt.get("classes", VOC_CLASSES)
 img_size = ckpt.get("img_size", args.img_size)
 
 print(f"\nLoading {args.checkpoint} (epoch {ckpt['epoch']}, mAP@50={ckpt.get('map', 0):.3f})...")
-model = build_retinanet(
-    num_classes=len(classes),
-    num_steps=ckpt.get("num_steps", 8),
-    trainable_backbone_layers=3,
-    min_size=img_size, max_size=img_size,
-)
-model.load_state_dict(ckpt["model_state_dict"])
+state = ckpt["model_state_dict"]
+is_yolov8 = any(k.startswith("head.cls_branches.") for k in state.keys())
+print(f"  Detector type: {'YOLOv8 (V7/V8)' if is_yolov8 else 'RetinaNet (V3-V5)'}")
+if is_yolov8:
+    model = build_yolov8_detector(
+        num_classes=len(classes),
+        num_steps=ckpt.get("num_steps", 8),
+        backbone_source="none",
+        trainable_backbone_layers=4,
+    )
+else:
+    model = build_retinanet(
+        num_classes=len(classes),
+        num_steps=ckpt.get("num_steps", 8),
+        trainable_backbone_layers=3,
+        min_size=img_size, max_size=img_size,
+    )
+model.load_state_dict(state, strict=False)
 model.to(device).eval()
-model.score_thresh = args.score_thresh
+if hasattr(model, "score_thresh"):
+    model.score_thresh = args.score_thresh
 
 n_params = sum(p.numel() for p in model.parameters())
 print(f"Total params: {n_params:,}  ({n_params * 4 / 1024**2:.1f} MB fp32)")

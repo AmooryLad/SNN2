@@ -1,0 +1,27 @@
+=== Experiment V7_debug: V7 50-iter smoke test ===
+Log: /workspace/SNN/logs/cifar100_spikedetect_V7_debug.log
+dataset=coco batch=10 img=416 epochs=1 warmup=0 amp=True
+backbone_source=imagenet_ann  warm_start=cifar100_spikedetect_V5_kd_best.pth scope=backbone_only  aug=basic
+USE_KD=True  USE_SPIKING_HEAD=False
+loading annotations into memory...
+Done (t=12.13s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.53s)
+creating index...
+index created!
+Train batches: 11828  Val batches: 500
+num_classes=81 (incl. background)
+[SEWBackboneForDetection:imagenet_ann] loaded 660 keys, skipped 0, still-missing 240
+Warm-started from cifar100_spikedetect_V5_kd_best.pth (scope=backbone_only): loaded 900 keys, skipped 24
+Total params: 17,414,811  Trainable: 17,263,251
+Loading ANN teacher: torchvision RetinaNet-R50-FPN-v2 @ 416...
+Backbone trainable: 11,092,192
+Head/FPN trainable: 6,171,059
+USE_EMA=True  USE_PROGRESSIVE_UNFREEZE=True
+No resume checkpoint — fresh start for this experiment.
+--- Epoch 0: unfreezing 1/4 backbone layer-groups, trainable params 14,611,071 ---
+  iter 0/11828  loss=231.2885  (cls 173.9184 ciou 3.4594 dfl 4.2459)  0.09 it/s  gpu_mem=17908 MB
+Epoch 0 train | total=176.0532 cls=126.1558 ciou=3.0717 dfl=3.8077 | LR bb=0.00e+00 head=0.00e+00 | 50 batches in 41.4s
+Training complete.
