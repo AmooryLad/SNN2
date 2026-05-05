@@ -143,9 +143,11 @@ Total gain V3 → V8: **+0.122 mAP@50** (+41% relative). The largest single jump
 │   ├── inference_gui.py        # Tkinter GUI for live inference
 │   └── video_classify.py       # Event-camera-style video viz
 │
-├── checkpoints/                # Model weights
-│   └── cifar100_spikedetect_V8_512_best.pth   ← LFS (267 MB)
-│   (V3-V7 chain ckpts kept locally, not on GitHub)
+├── checkpoints/                # Model weights (all LFS-tracked)
+│   ├── cifar100_spikedetect_V5_kd_best.pth      ← LFS (311 MB)
+│   ├── cifar100_spikedetect_V7_yolov8_best.pth  ← LFS (267 MB)
+│   └── cifar100_spikedetect_V8_512_best.pth     ← LFS (267 MB)
+│   (V3-V4 ckpts kept locally to stay within free LFS quota)
 │
 ├── logs/                       # Training logs (full audit trail)
 │   ├── cifar100_spikedetect_V3_imagenet.log   (V3 → V4 → V5 → V7 → V8)
@@ -373,7 +375,20 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
 
 ### Earlier versions
 
-To reproduce V3-V7 you would need to chain through the earlier checkpoints (only V8 ships with the repo to keep within Git LFS free quota). The full chain is documented in `EXPERIMENTS` dict at [`train.py:87`](cifar100_spikedetect/train.py#L87).
+V5_kd, V7_yolov8, and V8_512 checkpoints all ship with the repo via Git LFS. To reproduce V8 from scratch, the full chain is:
+
+- **V8** ← warm-start backbone+head from V7_yolov8 → 30 epochs at 512×512 with KD
+- **V7_yolov8** ← warm-start backbone from V5_kd, fresh YOLOv8 head → 20 epochs at 416×416 with KD
+- **V5_kd** ← warm-start from V4 (not in repo), KD enabled → 20 epochs at 416×416
+
+To recreate V7 (warm-starting from V5):
+```bash
+# Edit cifar100_spikedetect/train.py and set EXPERIMENT = "V7_yolov8"
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
+  ./venv/bin/python -m cifar100_spikedetect.train
+```
+
+V3 and V4 checkpoints are not in the repo (would exceed free LFS quota). To reproduce them you would need to start from `cifar100_detect_V2_coco_best.pth`, which is also not shipped. The full `EXPERIMENTS` configuration dict is at [`train.py:87`](cifar100_spikedetect/train.py#L87).
 
 ### Memory canary
 
