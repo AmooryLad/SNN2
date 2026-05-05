@@ -1,8 +1,10 @@
 # Datasets — too large for GitHub, download separately (COCO, N-Caltech101)
 data/
 
-# All checkpoints except V8 final (V8 is LFS-tracked)
+# All checkpoints except V5/V7/V8 chain (LFS-tracked)
 checkpoints/*.pth
+!checkpoints/cifar100_spikedetect_V5_kd_best.pth
+!checkpoints/cifar100_spikedetect_V7_yolov8_best.pth
 !checkpoints/cifar100_spikedetect_V8_512_best.pth
 
 # Python virtual environments

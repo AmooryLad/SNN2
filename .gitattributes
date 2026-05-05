@@ -2,3 +2,5 @@
 *.py text eol=lf
 *.md text eol=lf
 checkpoints/cifar100_spikedetect_V8_512_best.pth filter=lfs diff=lfs merge=lfs -text
+checkpoints/cifar100_spikedetect_V5_kd_best.pth filter=lfs diff=lfs merge=lfs -text
+checkpoints/cifar100_spikedetect_V7_yolov8_best.pth filter=lfs diff=lfs merge=lfs -text
