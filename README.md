@@ -2,9 +2,8 @@
 
 A hybrid SNN-ANN object detector built on a SEW-ResNet-18 spiking backbone with a YOLOv8-style detection head, trained on COCO 2017. Final-year B.Sc. (Hons) Computer Science thesis project at Asia Pacific University of Technology and Innovation (APU) / De Montfort University Leicester, aligned with **UN SDG 9 (Industry, Innovation and Infrastructure)** through energy-efficient AI.
 
-**Author**: Ammar Sadik Shaker Attamish (TP072539)
-**Supervisor**: Ms. Aziah Abdolla
-**2nd Marker**: Dr. Fatin Izzati Ramli
+**Author**: Ammar Sadik Shaker Attamish 
+
 
 ---
 
